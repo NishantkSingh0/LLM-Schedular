@@ -12,7 +12,6 @@ import InterviewRulesPage from "./components/RulesPage.jsx";
 function App() {
 
   return (
-    <Router>
       <div>
         <Toaster position="top-right" reverseOrder={false} />
         <Routes>
@@ -22,7 +21,6 @@ function App() {
           <Route path="/Organization" element={<OrgLogin />} />
         </Routes>
       </div>
-    </Router>
   )
 }
 
