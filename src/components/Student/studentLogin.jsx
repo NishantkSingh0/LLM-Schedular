@@ -3,7 +3,7 @@ import Suggestions from "../Suggestions.jsx";
 import { Upload, FileText } from "lucide-react";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../firebase.js";
+// import { auth } from "../firebase.js";
 
 
 export default function StudentLogin() {
@@ -114,11 +114,11 @@ export default function StudentLogin() {
           {/* Primary Email */}
           <button 
             onClick={handleGoogleLogin} 
-            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+            className="bg-red-500 w-[50%] flex justify-center text-white px-4 py-2 rounded-lg hover:bg-red-600"
           >
-            Continue with Google
+            Continue with Google  {/* < Need to be connect with firebase authentication */}
           </button>
-
+              
           {/* Resume Upload */}
           <div>
             <label className="block text-sm mb-2">Upload Resume</label>
