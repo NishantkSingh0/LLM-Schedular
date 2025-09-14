@@ -2,6 +2,8 @@ import { useState } from "react";
 import Suggestions from "../Suggestions.jsx";
 import { Upload, FileText } from "lucide-react";
 import toast from "react-hot-toast";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase.js";
 
 
 export default function StudentLogin() {
@@ -30,6 +32,22 @@ export default function StudentLogin() {
       setFormData({ ...formData, resume: file });
     } else {
       alert("Please upload a PDF file only!");
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+
+      // The signed-in user info
+      const user = result.user;
+      console.log("User:", user.displayName, user.email, user.emailVerified);
+      toast.success("User:", user.displayName, user.email, user.emailVerified);
+      // emailVerified will always be true for Google users
+    } catch (error) {
+      console.error(error);
+      toast.error(error)
     }
   };
 
@@ -94,16 +112,12 @@ export default function StudentLogin() {
             </div>
 
           {/* Primary Email */}
-            <div className="space-y-2">
-                <label className="block text-sm font-medium dark:text-slate-300">Primary email</label>
-                <input
-                  type="text"
-                  placeholder='example@email.com'
-                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                />
-                <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
-            </div>
+          <button 
+            onClick={handleGoogleLogin} 
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+          >
+            Continue with Google
+          </button>
 
           {/* Resume Upload */}
           <div>

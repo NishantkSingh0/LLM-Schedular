@@ -16,7 +16,7 @@ function App() {
       <div>
         <Toaster position="top-right" reverseOrder={false} />
         <Routes>
-          <Route path="/" element={<InterviewRulesPage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/Student" element={<StudentLogin />} />
           <Route path="/Candidate" element={<CandidateLogin />} />
           <Route path="/Organization" element={<OrgLogin />} />
