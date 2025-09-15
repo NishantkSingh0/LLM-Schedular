@@ -117,7 +117,7 @@ export default function StudentLogin() {
           {/* Primary Email */}
           <button 
             onClick={handleGoogleLogin} 
-            className="bg-red-500 w-[50%] flex justify-center text-white px-4 py-2 rounded-lg hover:bg-red-600"
+            className="bg-blue-600 w-[50%] flex justify-center text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600"
           >
             Continue with Google  {/* < Need to be connect with firebase authentication */}
           </button>

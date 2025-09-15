@@ -7,17 +7,17 @@ export default function HomePage() {
   const sections = [
     {
       title: "Student Login",
-      description: "Access your dashboard and schedule interviews seamlessly.",
+      description: "Individual Students can Practice their ability to select in Real Interviews",
       link: "/Student",
     },
     {
       title: "Organization Login",
-      description: "Manage candidate interviews and track progress.",
+      description: "Here organizations can schedule interviews for their selected candidates",
       link: "/Organization",
     },
     {
       title: "Candidate Login",
-      description: "Prepare and schedule interviews with ease.",
+      description: "Org registered candidates can start their interview from here",
       link: "/Candidate",
     },
   ];
