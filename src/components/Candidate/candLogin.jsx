@@ -27,7 +27,7 @@ export default function CandidateLogin() {
   };
 
   const handleSubmit = () => {
-    toast.success("LogedIn");
+    // toast.success("LogedIn");
     console.log(formData);
     navigate('/Interview')
   };
@@ -38,7 +38,7 @@ export default function CandidateLogin() {
       toast.error("Please fill all fields and upload a PDF resume!");
       return;
     }
-    toast.success("All fields are valid!");
+    // toast.success("All fields are valid!");
     // Add next step logic here
   };
 
