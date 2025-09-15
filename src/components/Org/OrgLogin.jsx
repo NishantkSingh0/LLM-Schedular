@@ -25,6 +25,7 @@ export default function OrgLogin() {
     }
     console.log(orgDetails)
     // navigate("/organization/pay", { state: orgDetails });
+    navigate('/Interview')
   };
 
   return (

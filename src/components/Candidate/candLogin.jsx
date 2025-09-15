@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Upload, FileText } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
 
 export default function CandidateLogin() {
@@ -9,6 +10,8 @@ export default function CandidateLogin() {
     password: "",
     resume: null,
   });
+
+  const navigate=useNavigate();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -21,6 +24,12 @@ export default function CandidateLogin() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    toast.success("LogedIn");
+    console.log(formData);
+    navigate('/Interview')
   };
 
   const handleNext = (e) => {
@@ -119,6 +128,7 @@ export default function CandidateLogin() {
             {/* Submit Button */}
             <button
               type="submit"
+              onClick={handleSubmit}
               className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold cursor-pointer"
             >
               Next ➤
