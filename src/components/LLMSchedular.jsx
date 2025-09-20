@@ -192,7 +192,7 @@ const TTS = async (text) => {
   const handleAudioEnded = async () => {
     setIsPlaying(false);
     // Wait for 2 Seconds
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // await new Promise((resolve) => setTimeout(resolve, 500));
     // Auto-start recording after TTS ends
     await startRecording();
   };

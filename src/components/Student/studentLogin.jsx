@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Suggestions from "../Suggestions.jsx";
 import { Upload, FileText } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 // import { auth } from "../firebase.js";
@@ -13,12 +14,14 @@ export default function StudentLogin() {
     designation: "",
     level: "",
     fullName: "",
-    email: "",
+    // email: "",
     resume: null,
   });
+  const levels=["I", "II", "III", "Advanced"]
+  const navigate=useNavigate();
 
-  const handleSelectChange = (selectedOption) => {
-    setFormData({ ...formData, designation: selectedOption.value });
+  const handleSelectChange = (val) => {
+    setFormData({ ...formData, designation: val });
   };
 
   const handleRadioChange = (e) => {
@@ -53,12 +56,13 @@ export default function StudentLogin() {
 
   const handleNext = (e) => {
     e.preventDefault();
-    if (!formData.orgId || !formData.username || !formData.password || !formData.resume) {
+    console.log(formData)
+    if (!formData.fullName || !formData.designation || !formData.level || !formData.resume) { //  !formData.username || !formData.password ||
       toast.error("Please fill all fields and upload a PDF resume!");
       return;
     }
     toast.success("All fields are valid!");
-    // Add next step logic here
+    navigate('/Interview')
   };
 
   return (
@@ -74,26 +78,38 @@ export default function StudentLogin() {
               label="Designation"
               placeholder="Search your designation..."
               value={formData.designation}
-              onChange={handleSelectChange}
+              onChange={(val) => {handleSelectChange(val)}}    //{handleSelectChange(value)}
               suggestions={["Software Engineer", "Frontend Developer", "Backend Developer", "Full Stack Developer","Mobile App Developer", "Web Developer", "UI/UX Designer", "UI Developer", "UX Researcher","Graphic Designer", "Game Developer", "DevOps Engineer", "Cloud Engineer", "Cloud Architect","Data Engineer", "Data Scientist", "Machine Learning Engineer", "AI Engineer", "NLP Engineer","Computer Vision Engineer", "Deep Learning Engineer", "Big Data Engineer", "Data Analyst","Business Intelligence Analyst", "Database Administrator", "System Administrator","Network Administrator", "IT Support Specialist", "IT Technician", "IT Security Analyst","Cybersecurity Specialist", "Information Security Analyst", "Security Architect","Solutions Architect", "Technical Architect", "System Architect", "Software Architect","Firmware Engineer", "Embedded Systems Engineer", "IoT Developer", "Blockchain Developer","AR/VR Developer", "Game Designer", "Technical Support Engineer", "QA Tester", "QA Analyst","QA Engineer", "Automation Tester", "Test Engineer", "Performance Test Engineer","Product Manager (Tech)", "Project Manager (Tech)", "Technical Program Manager", "Scrum Master","Release Manager", "Site Reliability Engineer", "Platform Engineer", "Technical Writer","API Developer", "Integration Engineer", "Hardware Engineer", "Robotics Engineer","Electronics Engineer", "VLSI Engineer", "Firmware Developer", "Cloud Consultant", "IT Manager","Managing Director", "Director of Operations", "Director of Technology", "Director of Marketing","Director of Sales", "Director of Human Resources", "General Manager", "Operations Manager","Business Manager", "Program Manager", "Senior Manager", "Assistant Manager", "Branch Manager","Area Manager", "Regional Manager", "Zonal Manager", "Team Lead", "Group Manager","Sales Executive", "Sales Representative", "Sales Manager", "Area Sales Manager","Regional Sales Manager", "Zonal Sales Manager", "Territory Sales Manager", "Business Development Executive","Business Development Manager", "Business Development Associate", "Business Development Representative","Sales Associate", "Account Executive", "Account Manager", "Key Account Manager","Client Relationship Manager", "Relationship Executive", "Customer Success Manager","Tele Sales Executive", "Inside Sales Executive", "Sales Consultant", "Sales Coordinator","Sales Director", "Marketing Executive", "Marketing Manager", "Digital Marketing Executive","Digital Marketing Manager", "SEO Specialist", "SEM Specialist", "PPC Specialist","Social Media Manager", "Content Marketing Manager", "Growth Marketing Manager", "Brand Manager","Product Marketing Manager", "Event Marketing Manager", "Influencer Marketing Manager","Affiliate Marketing Manager", "Performance Marketing Manager", "Marketing Analyst","Email Marketing Specialist", "Copywriter", "Content Writer", "Creative Director","PR Manager", "Media Planner", "Advertising Manager", "Media Buyer", "Campaign Manager","Accountant", "Chartered Accountant", "Cost Accountant", "Tax Consultant", "Tax Analyst","Financial Analyst", "Investment Analyst", "Budget Analyst", "Finance Executive","Finance Manager", "Finance Controller", "Financial Planner", "Financial Advisor","Risk Analyst", "Risk Manager", "Credit Analyst", "Credit Manager", "Loan Officer","Accounts Payable Executive", "Accounts Receivable Executive", "Payroll Executive","Payroll Manager", "Bookkeeper", "Auditor", "Internal Auditor", "External Auditor","Forensic Accountant", "Finance Director", "Treasury Manager","HR Executive", "HR Manager", "HR Generalist", "HR Specialist", "HR Assistant","Talent Acquisition Executive", "Talent Acquisition Manager", "Recruitment Executive","Recruitment Manager", "Employee Relations Manager", "HR Business Partner","Compensation & Benefits Manager", "Payroll Specialist", "Training & Development Manager","L&D Specialist", "Organizational Development Manager", "HR Analyst", "HR Coordinator","HR Consultant", "HR Operations Executive", "People & Culture Manager","Operations Executive", "Operations Manager", "Operations Analyst", "Supply Chain Executive","Supply Chain Manager", "Logistics Executive", "Logistics Manager", "Inventory Manager","Warehouse Manager", "Procurement Executive", "Procurement Manager", "Purchase Executive","Purchase Manager", "Vendor Manager", "Sourcing Manager", "Fleet Manager", "Material Planner","Demand Planner", "Distribution Manager", "Import Export Executive", "Quality Control Executive","Quality Control Manager", "Plant Manager", "Manufacturing Manager", "Production Manager","Customer Service Executive", "Customer Service Representative", "Customer Care Executive","Call Center Executive", "Technical Support Executive", "Technical Support Specialist","Customer Support Analyst", "Helpdesk Executive", "Service Delivery Manager","Client Support Executive", "Chat Support Executive", "Email Support Executive","Customer Experience Manager", "Customer Retention Specialist", "Support Operations Manager","Graphic Designer", "Motion Graphics Designer", "Video Editor", "Animator", "3D Artist","3D Animator", "Visual Designer", "Creative Director", "Art Director", "Illustrator","Concept Artist", "Fashion Designer", "Interior Designer", "Industrial Designer","Product Designer", "Photographer", "Videographer", "Brand Designer", "Layout Designer", "UI Designer","Teacher", "Lecturer", "Assistant Professor", "Professor", "Academic Coordinator","Trainer", "Corporate Trainer", "Learning & Development Specialist", "Instructional Designer","Curriculum Developer", "Education Consultant", "School Counselor", "Career Counselor","Doctor", "Nurse", "Pharmacist", "Lab Technician", "Radiologist", "Medical Officer","Surgeon", "Physiotherapist", "Dentist", "Medical Representative", "Healthcare Administrator","Clinical Research Associate", "Dietitian", "Nutritionist", "Paramedic","Legal Advisor", "Lawyer", "Advocate", "Journalist", "Writer"]}
               isMultiSuggestion={false}
             />
           </div>
 
           {/* Expected Position Level */}
-          <div>
-            <label className="block text-sm mb-2">Expected Position Level</label>
-            <div className="flex space-x-4">
-              {["I", "II", "III", "Advanced"].map((level) => (
-                <label key={level} className="flex items-center space-x-2">
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Expected Position Level
+            </label>
+
+            <div className="flex gap-6 justify-center">
+              {levels.map((level) => (
+                <label
+                  key={level}
+                  className={`px-4 py-2 rounded-2xl cursor-pointer shadow-sm transition-all 
+                    border text-sm font-medium
+                    ${
+                      formData.level === level
+                        ? "bg-blue-500 text-gray-200 shadow-md border-blue-600"
+                        : "bg-gray-500 text-gray-200 hover:bg-gray-600 border-gray-300"
+                    }`}
+                >
                   <input
                     type="radio"
                     name="level"
                     value={level}
                     onChange={handleRadioChange}
-                    className="form-radio text-blue-500"
+                    className="hidden"
                   />
-                  <span>{level}</span>
+                  {level}
                 </label>
               ))}
             </div>
@@ -101,11 +117,11 @@ export default function StudentLogin() {
 
           {/* Full Name */}
             <div className="space-y-2">
-                <label className="block text-sm font-medium dark:text-slate-300">Full Name</label>
+                <label className="block text-sm font-medium text-gray-300">Full Name</label>
                 <input
                   type="text"
-                  placeholder='Ram Ayodhya Singh'
-                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                  placeholder='Your Name'
+                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 />
                 <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
@@ -114,7 +130,7 @@ export default function StudentLogin() {
           {/* Primary Email */}
           <button 
             onClick={handleGoogleLogin} 
-            className="bg-red-500 w-[50%] flex justify-center text-white px-4 py-2 rounded-lg hover:bg-red-600"
+            className="bg-blue-600 w-[50%] flex justify-center text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600"
           >
             Continue with Google  {/* < Need to be connect with firebase authentication */}
           </button>

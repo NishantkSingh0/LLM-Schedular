@@ -52,7 +52,7 @@ def generate_questions():
         f"What is your experience related to {org_need}?",
         f"How do you handle challenges at {position_level} level?",
         "Describe a project you are proud of.",
-        "What technologies do you prefer?",
+        "What technologies do you prefer for high traffic backend?",
         "How do you keep yourself updated?"
     ]
 
