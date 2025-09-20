@@ -17,6 +17,7 @@ export default function StudentLogin() {
     // email: "",
     resume: null,
   });
+  const levels=["I", "II", "III", "Advanced"]
   const navigate=useNavigate();
 
   const handleSelectChange = (val) => {
@@ -84,19 +85,31 @@ export default function StudentLogin() {
           </div>
 
           {/* Expected Position Level */}
-          <div>
-            <label className="block text-sm mb-2">Expected Position Level</label>
-            <div className="flex space-x-4">
-              {["I", "II", "III", "Advanced"].map((level) => (
-                <label key={level} className="flex items-center space-x-2">
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              Expected Position Level
+            </label>
+
+            <div className="flex gap-6 justify-center">
+              {levels.map((level) => (
+                <label
+                  key={level}
+                  className={`px-4 py-2 rounded-2xl cursor-pointer shadow-sm transition-all 
+                    border text-sm font-medium
+                    ${
+                      formData.level === level
+                        ? "bg-blue-500 text-gray-200 shadow-md border-blue-600"
+                        : "bg-gray-500 text-gray-200 hover:bg-gray-600 border-gray-300"
+                    }`}
+                >
                   <input
                     type="radio"
                     name="level"
                     value={level}
                     onChange={handleRadioChange}
-                    className="form-radio text-blue-500"
+                    className="hidden"
                   />
-                  <span>{level}</span>
+                  {level}
                 </label>
               ))}
             </div>
@@ -104,11 +117,11 @@ export default function StudentLogin() {
 
           {/* Full Name */}
             <div className="space-y-2">
-                <label className="block text-sm font-medium dark:text-slate-300">Full Name</label>
+                <label className="block text-sm font-medium text-gray-300">Full Name</label>
                 <input
                   type="text"
-                  placeholder='Ram Ayodhya Singh'
-                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                  placeholder='Your Name'
+                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 />
                 <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>

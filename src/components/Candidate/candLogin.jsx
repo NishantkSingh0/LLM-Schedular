@@ -50,12 +50,12 @@ export default function CandidateLogin() {
         <form className="space-y-6" onSubmit={handleNext}>
             {/* Org ID */}
             <div className="space-y-2">
-                <label className="block text-sm font-medium dark:text-slate-300">Org Id</label>
+                <label className="block text-sm font-medium">Org Id</label>
                 <input
                   type="text"
                   name="orgId"
                   placeholder='Enter Org ID'
-                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
                   onChange={handleChange}
                 />
                 <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
@@ -64,12 +64,12 @@ export default function CandidateLogin() {
 
             {/* Username */}
             <div className="space-y-2">
-                <label className="block text-sm font-medium dark:text-slate-300">Username</label>
+                <label className="block text-sm font-medium">Username</label>
                 <input
                   type="text"
                   name="username"
                   placeholder='Enter your username'
-                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
                   onChange={handleChange}
                 />
                 <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
@@ -78,12 +78,12 @@ export default function CandidateLogin() {
 
             {/* Password */}
             <div className="space-y-2">
-                <label className="block text-sm font-medium dark:text-slate-300">Password</label>
+                <label className="block text-sm font-medium">Password</label>
                 <input
                   type="password"
                   name="password"
                   placeholder='Enter your password'
-                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
                   onChange={handleChange}
                 />
                 <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
