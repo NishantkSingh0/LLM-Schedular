@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Suggestions from "../Suggestions.jsx";
+import Suggestions from "./Suggestions.jsx";
 import { Upload, FileText } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
@@ -17,7 +17,7 @@ export default function StudentLogin() {
     // email: "",
     resume: null,
   });
-  const levels=["I", "II", "III", "Advanced"]
+  const levels=["Beginner","I", "II", "III", "Advanced"]
   const navigate=useNavigate();
 
   const handleSelectChange = (val) => {

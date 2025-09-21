@@ -1,17 +1,21 @@
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, send_file, jsonify, Response
 from flask_cors import CORS
 from io import BytesIO
 
 app = Flask(__name__)
 CORS(app)  
 
+@app.route('/wakeup', methods=['GET'])
+def wakeup():
+    print("Wakeup ping received — server is alive!")
+    return Response(status=204)  # No content, returns instantly
 
 @app.route('/tts', methods=['POST'])
 def send_audio():
     text = request.json.get("text")
     print('request maded')
+    
     # Generate TTS dynamically and keep it in memory (example using static content)
-    # In real case, replace this with your TTS function that returns audio bytes
     with open("InterviewSchedular.wav", "rb") as f:
         audio_bytes = f.read()
 
