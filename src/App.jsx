@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from "./components/practice.jsx";
-import StudentLogin from "./components/Student/studentLogin.jsx";
-import OrgLogin from "./components/Org/OrgLogin.jsx";
-import CandidateLogin from "./components/Candidate/candLogin.jsx";
+import StudentLogin from "./components/studentLogin.jsx";
+import OrgLogin from "./components/OrgLogin.jsx";
+import CandidateLogin from "./components/candLogin.jsx";
 import LoginUi from "./components/LoginPage.jsx";
 import ScheduleInterview from "./components/LLMSchedular.jsx";
 import InterviewRulesPage from "./components/RulesPage.jsx";

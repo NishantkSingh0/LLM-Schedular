@@ -1,8 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function LoginUi() {
   const navigate = useNavigate();
+  
+  // WakeUp the Server
+  useEffect(() => {
+      fetch("https://llm-schedular.onrender.com/wakeup")     // http://127.0.0.1:5000
+        .catch(() => {}); // ignore any errors
+    }, []);
 
   const sections = [
     {
