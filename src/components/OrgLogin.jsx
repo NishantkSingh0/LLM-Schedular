@@ -32,22 +32,10 @@ export default function OrgLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <div className="bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-md">
+      <div className="bg-gray-800 p-8 rounded-2xl shadow-xl w-[500px]">
         <h1 className="text-2xl font-bold text-center mb-6">
           Organization Details
         </h1>
-          <div className="space-y-2 mb-4">
-            <label className="block text-sm font-medium">Create a unique OrgId</label>
-            <input
-              type="text"
-              name="orgId"
-              placeholder='Organization ID'
-              className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
-              value={orgDetails.orgId}
-              onChange={handleChange}
-            />
-            <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
-          </div>
           <div className="space-y-2 mb-4">
               <label className="block text-sm font-medium">Organization Name</label>
               <input
@@ -59,6 +47,18 @@ export default function OrgLogin() {
                 onChange={handleChange}
               />
               <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
+          </div>
+          <div className="space-y-2 mb-4">
+            <label className="block text-sm font-medium">Create a unique OrgId</label>
+            <input
+              type="text"
+              name="orgId"
+              placeholder='xyz@1'
+              className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
+              value={orgDetails.orgId}
+              onChange={handleChange}
+            />
+            <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
           </div>
           <div className="space-y-2 mb-4">
               <label className="block text-sm font-medium">Organization Email</label>
@@ -85,8 +85,8 @@ export default function OrgLogin() {
                     border text-sm font-medium
                     ${
                       orgDetails.orgType === orgType
-                        ? "bg-blue-500 text-gray-200 shadow-md border-blue-600"
-                        : "bg-gray-500 text-gray-200 hover:bg-gray-600 border-gray-300"
+                        ? "bg-blue-500 text-white shadow-md border-blue-600"
+                        : "bg-gray-600 text-white hover:bg-gray-700 border-gray-300"
                     }`}
                 >
                   <input
@@ -101,28 +101,11 @@ export default function OrgLogin() {
               ))}
             </div>
           </div>
-          {/* <div>
-            <label className="block text-sm mb-2">Organization Type</label>
-            <div className="flex space-x-4">
-              {["Startup", "Growing", "Mature", "Enterprise"].map((level) => (
-                <label key={level} className="flex items-center cursor-pointer space-x-2">
-                  <input
-                    type="radio"
-                    name="orgType"
-                    value={level}
-                    onChange={handleRadioChange}
-                    className="form-radio text-blue-500"
-                  />
-                  <span>{level}</span>
-                </label>
-              ))}
-            </div>
-          </div> */}
         <button
           onClick={handleNext}
           className="w-full mt-6 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold cursor-pointer"
         >
-          Next ➤
+          Next 
         </button>
       </div>
     </div>
