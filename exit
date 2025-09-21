@@ -1,0 +1,47 @@
+[33mcommit 1181dbca443a787bfc3ae08a6d85b3e8442c0cc5[m[33m ([m[1;31morigin/BackendDeployment[m[33m, [m[1;32mBackendDeployment[m[33m)[m
+Merge: d427461 d5f2c62
+Author: NishantkSingh0 <nishant18x.org@gmail.com>
+Date:   Sun Sep 21 13:13:03 2025 +0530
+
+    Resolved Conflicts
+
+[33mcommit d4274616db791f9c3951d5f9dc5b6c2199c48b32[m
+Author: NishantkSingh0 <nishant18x.org@gmail.com>
+Date:   Sun Sep 21 13:10:47 2025 +0530
+
+    Resolved Dependencies issue in backend
+
+[33mcommit d5f2c6242a188cf6f2ea53bdc9f576d3a197b3ad[m
+Merge: 7359d4e 7fdd868
+Author: Nishant Singh <166206623+NishantkSingh0@users.noreply.github.com>
+Date:   Sun Sep 21 13:04:27 2025 +0530
+
+    Merge branch 'main' into BackendDeployment
+
+[33mcommit 7359d4ea8e07076a76a0b32225b030f5c11009ac[m
+Author: NishantkSingh0 <nishant18x.org@gmail.com>
+Date:   Sun Sep 21 12:58:32 2025 +0530
+
+    Deployed and Connected Backend
+
+[33mcommit 7fdd86849c066baefdc82d0d1e17086bf4077502[m
+Author: Nishant Singh <166206623+NishantkSingh0@users.noreply.github.com>
+Date:   Sun Sep 21 11:06:32 2025 +0530
+
+    Backend deployment (#10)
+    
+    * resolved all initial UI errors
+    
+    * - Changed Directories
+    - Maked Backend Deployable
+    - Adjusted Backend Calls
+    - Enhanced UI
+
+[33mcommit 1cee027d6a5ed36624e7ecffd57f0d9092028846[m
+Author: NishantkSingh0 <nishant18x.org@gmail.com>
+Date:   Sun Sep 21 10:32:16 2025 +0530
+
+    - Changed Directories
+    - Maked Backend Deployable
+    - Adjusted Backend Calls
+    - Enhanced UI

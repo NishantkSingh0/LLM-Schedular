@@ -3,6 +3,7 @@ import Suggestions from "./Suggestions.jsx";
 import { Upload, FileText } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 // import { auth } from "../firebase.js";
 
@@ -39,19 +40,20 @@ export default function StudentLogin() {
   };
 
   const handleGoogleLogin = async () => {
-    try {
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+    // try {
+    //   const provider = new GoogleAuthProvider();
+    //   const result = await signInWithPopup(auth, provider);
 
-      // The signed-in user info
-      const user = result.user;
-      console.log("User:", user.displayName, user.email, user.emailVerified);
-      toast.success("User:", user.displayName, user.email, user.emailVerified);
-      // emailVerified will always be true for Google users
-    } catch (error) {
-      console.error(error);
-      toast.error(error)
-    }
+    //   // The signed-in user info
+    //   const user = result.user;
+    //   console.log("User:", user.displayName, user.email, user.emailVerified);
+    //   toast.success("User:", user.displayName, user.email, user.emailVerified);
+    //   // emailVerified will always be true for Google users
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error(error)
+    // }
+    toast.error("Authentication Login script is not managed")
   };
 
   const handleNext = (e) => {
@@ -67,10 +69,10 @@ export default function StudentLogin() {
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center text-white">
-      <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-[90%] md:w-[60%] lg:w-[40%] m-6">
+      <div className="bg-gray-800 p-8 rounded-2xl shadow-lg w-[510px] m-6">
         <h2 className="text-2xl font-bold mb-6 text-center">Student Login</h2>
 
-        <form className="space-y-6" onSubmit={handleNext}>
+        <form className="space-y-4" onSubmit={handleNext}>
           {/* Designation */}
           <div>
             {/* <label className="block text-sm mb-2">Designation</label> */}
@@ -90,7 +92,7 @@ export default function StudentLogin() {
               Expected Position Level
             </label>
 
-            <div className="flex gap-6 justify-center">
+            <div className="flex gap-4 justify-center">
               {levels.map((level) => (
                 <label
                   key={level}
@@ -98,8 +100,8 @@ export default function StudentLogin() {
                     border text-sm font-medium
                     ${
                       formData.level === level
-                        ? "bg-blue-500 text-gray-200 shadow-md border-blue-600"
-                        : "bg-gray-500 text-gray-200 hover:bg-gray-600 border-gray-300"
+                        ? "bg-blue-500 text-white shadow-md border-blue-600"
+                        : "bg-gray-600 text-white hover:bg-gray-700 border-gray-300"
                     }`}
                 >
                   <input
@@ -120,7 +122,7 @@ export default function StudentLogin() {
                 <label className="block text-sm font-medium text-gray-300">Full Name</label>
                 <input
                   type="text"
-                  placeholder='Your Name'
+                  placeholder='abc xyz'
                   className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 />
@@ -130,16 +132,16 @@ export default function StudentLogin() {
           {/* Primary Email */}
           <button 
             onClick={handleGoogleLogin} 
-            className="bg-blue-600 w-[50%] flex justify-center text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600"
+            className="bg-blue-600 w-full flex justify-center text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600"
           >
-            Continue with Google  {/* < Need to be connect with firebase authentication */}
+            Continue with <FcGoogle className="ml-2 w-6 h-6" />  {/* < Need to be connect with firebase authentication */}
           </button>
               
           {/* Resume Upload */}
           <div>
             <label className="block text-sm mb-2">Upload Resume</label>
             {!formData.resume ? (
-              <div className="border-2 border-dashed border-gray-500 rounded-lg p-6 flex flex-col items-center justify-center hover:border-blue-500">
+              <div className="border-2 border-dashed border-gray-500 rounded-lg p-4 flex flex-col items-center justify-center hover:border-blue-500">
                 <Upload className="w-8 h-8 mb-2 text-gray-300" />
                 <p className="text-gray-400 mb-2">Drag & Drop or Click to Upload</p>
                 <input
@@ -176,7 +178,7 @@ export default function StudentLogin() {
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold cursor-pointer"
           >
-            Next ➤
+            Next 
           </button>
         </form>
       </div>
