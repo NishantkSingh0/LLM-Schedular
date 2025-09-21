@@ -14,7 +14,7 @@ def wakeup():
 def send_audio():
     text = request.json.get("text")
     print('request maded')
-    
+
     # Generate TTS dynamically and keep it in memory (example using static content)
     with open("InterviewSchedular.wav", "rb") as f:
         audio_bytes = f.read()
@@ -64,4 +64,4 @@ def generate_questions():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()           # debug=True

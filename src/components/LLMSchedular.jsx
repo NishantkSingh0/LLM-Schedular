@@ -32,7 +32,7 @@ const ScheduleInterview = () => {
 
   const fetchQuestions = async (orgNeed, positionLevel) => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/qns", {
+      const response = await fetch("https://llm-schedular.onrender.com/qns", {              // http://127.0.0.1:5000
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -64,7 +64,7 @@ const ScheduleInterview = () => {
       const formData = new FormData();
       formData.append("file", RecordingBlob, "audio.wav");
 
-      const response = await fetch("http://127.0.0.1:5000/stt", {
+      const response = await fetch("https://llm-schedular.onrender.com/stt", {                 // http://127.0.0.1:5000
         method: "POST",
         body: formData,
       });
@@ -112,7 +112,7 @@ const ScheduleInterview = () => {
 
 const TTS = async (text) => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/tts", {
+    const response = await fetch("https://llm-schedular.onrender.com/tts", {               // http://127.0.0.1:5000
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text })

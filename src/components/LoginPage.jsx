@@ -6,7 +6,7 @@ export default function LoginUi() {
   
   // WakeUp the Server
   useEffect(() => {
-      fetch("http://127.0.0.1:5000/wakeup")
+      fetch("https://llm-schedular.onrender.com/wakeup")     // http://127.0.0.1:5000
         .catch(() => {}); // ignore any errors
     }, []);
 
