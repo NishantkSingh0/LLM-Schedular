@@ -44,10 +44,10 @@ export default function CandidateLogin() {
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center text-white">
-      <div className="bg-gray-800 p-6 m-4 sm:m-6 rounded-2xl shadow-lg w-[90%] md:w-[60%] lg:w-[40%]">
+      <div className="bg-gray-800 p-6 m-6 rounded-2xl shadow-lg w-[500px]">
         <h2 className="text-2xl font-bold mb-6 text-center">Candidate Login</h2>
 
-        <form className="space-y-6" onSubmit={handleNext}>
+        <form className="space-y-2" onSubmit={handleNext}>
             {/* Org ID */}
             <div className="space-y-2">
                 <label className="block text-sm font-medium">Org Id</label>
@@ -55,7 +55,7 @@ export default function CandidateLogin() {
                   type="text"
                   name="orgId"
                   placeholder='Enter Org ID'
-                  className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
+                  className="w-full px-6 p-2 border rounded peer focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
                   onChange={handleChange}
                 />
                 <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
@@ -94,7 +94,7 @@ export default function CandidateLogin() {
             <div>
               <label className="block text-sm mb-2">Upload Resume</label>
               {!formData.resume ? (
-                <div className="border-2 border-dashed border-gray-500 rounded-lg p-6 flex flex-col items-center justify-center hover:border-blue-500">
+                <div className="border-2 border-dashed border-gray-500 rounded-lg p-4 flex flex-col items-center justify-center hover:border-blue-500">
                   <Upload className="w-8 h-8 mb-2 text-gray-300" />
                   <p className="text-gray-400 mb-2">Drag & Drop or Click to Upload</p>
                   <input
@@ -131,7 +131,7 @@ export default function CandidateLogin() {
               onClick={handleSubmit}
               className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold cursor-pointer"
             >
-              Next ➤
+              Next 
             </button>
         </form>
       </div>
