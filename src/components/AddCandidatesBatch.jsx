@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
+=======
+import toast from "react-hot-toast";
+>>>>>>> e5aaf4e17c3e7c38d7ffe76c278f4273fb7226a1
 
 export default function AddCandidateBatch() {
   const [orgRequirement, setOrgRequirement] = useState("");
@@ -20,11 +24,19 @@ export default function AddCandidateBatch() {
     const validEmails = emails.map(e => e.trim()).filter(e => e !== "");
 
     if (!trimmedRequirement) {
+<<<<<<< HEAD
       alert("Please enter the organization requirement.");
       return;
     }
     if (validEmails.length === 0) {
       alert("Please add at least one candidate email.");
+=======
+      toast.error("Please enter the organization requirement.");
+      return;
+    }
+    if (validEmails.length === 0) {
+      toast.error("Please add at least one candidate email.");
+>>>>>>> e5aaf4e17c3e7c38d7ffe76c278f4273fb7226a1
       return;
     }
 
@@ -46,7 +58,11 @@ export default function AddCandidateBatch() {
       console.log(`📩 Sample Mail Sent to: ${email} | Requirement: ${trimmedRequirement}`);
     });
 
+<<<<<<< HEAD
     alert(`Batch ${batchKey} submitted successfully! ${validEmails.length} invitations prepared.`);
+=======
+    toast.success(`Batch ${batchKey} submitted successfully! ${validEmails.length} invitations prepared.`);
+>>>>>>> e5aaf4e17c3e7c38d7ffe76c278f4273fb7226a1
 
     // Reset form
     setOrgRequirement("");
@@ -55,8 +71,13 @@ export default function AddCandidateBatch() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="flex justify-center items-start min-h-screen bg-gray-100 p-5">
       <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
+=======
+    <div className="flex justify-center items-start min-h-screen bg-gray-900 p-5">
+      <div className="bg-gray-800 p-6 text-amber-50 rounded-2xl shadow-lg w-full max-w-md">
+>>>>>>> e5aaf4e17c3e7c38d7ffe76c278f4273fb7226a1
         <h2 className="text-xl font-bold text-center mb-4">Add Candidate Batch</h2>
 
         <label className="block font-semibold mb-1">Organization Requirement</label>
@@ -100,4 +121,8 @@ export default function AddCandidateBatch() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e5aaf4e17c3e7c38d7ffe76c278f4273fb7226a1
