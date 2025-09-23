@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function AddCandidateBatch() {
   const [orgRequirement, setOrgRequirement] = useState("");
@@ -20,11 +21,11 @@ export default function AddCandidateBatch() {
     const validEmails = emails.map(e => e.trim()).filter(e => e !== "");
 
     if (!trimmedRequirement) {
-      alert("Please enter the organization requirement.");
+      toast.error("Please enter the organization requirement.");
       return;
     }
     if (validEmails.length === 0) {
-      alert("Please add at least one candidate email.");
+      toast.error("Please add at least one candidate email.");
       return;
     }
 
@@ -46,7 +47,7 @@ export default function AddCandidateBatch() {
       console.log(`📩 Sample Mail Sent to: ${email} | Requirement: ${trimmedRequirement}`);
     });
 
-    alert(`Batch ${batchKey} submitted successfully! ${validEmails.length} invitations prepared.`);
+    toast.success(`Batch ${batchKey} submitted successfully! ${validEmails.length} invitations prepared.`);
 
     // Reset form
     setOrgRequirement("");
@@ -55,8 +56,8 @@ export default function AddCandidateBatch() {
   };
 
   return (
-    <div className="flex justify-center items-start min-h-screen bg-gray-100 p-5">
-      <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
+    <div className="flex justify-center items-start min-h-screen bg-gray-900 p-5">
+      <div className="bg-gray-800 p-6 text-amber-50 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-xl font-bold text-center mb-4">Add Candidate Batch</h2>
 
         <label className="block font-semibold mb-1">Organization Requirement</label>

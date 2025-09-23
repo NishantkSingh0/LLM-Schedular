@@ -32,6 +32,7 @@ function App() {
             <Route path="/Student" element={<Animate><StudentLogin /></Animate>} />
             <Route path="/Candidate" element={<Animate><CandidateLogin /></Animate>} />
             <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
+            <Route path="/Organization/Add_Candidates" element={<Animate><AddCandidateBatch /></Animate>} />
             <Route path="/Interview" element={<Animate><ScheduleInterview /></Animate>} />
 
           </Routes>
