@@ -27,7 +27,7 @@ export default function OrgLogin() {
     console.log(orgDetails)
     toast.success("Form Filled successfully. But nothing to naviagete")
     // navigate("/organization/pay", { state: orgDetails });
-    // navigate('/Interview')
+    navigate('/Organization/Add_Candidates')
   };
 
   return (
