@@ -1,2 +1,2 @@
-@import "tailwindcss/preflight"; /* replaces @tailwind base */
-@tailwind utilities;              /* components are merged into utilities now */
+@import "tailwindcss/preflight"; 
+@tailwind utilities;              
