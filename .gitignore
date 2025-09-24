@@ -1,2 +1,3 @@
 backend/venv/
 node_modules
+dist
