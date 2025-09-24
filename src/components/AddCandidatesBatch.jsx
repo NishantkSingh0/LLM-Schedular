@@ -57,48 +57,54 @@ export default function AddCandidateBatch() {
   };
 
   return (
-    <div className="flex justify-center items-start min-h-screen bg-gray-900 p-5">
-      <div className="bg-gray-800 p-6 text-amber-50 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 className="text-xl font-bold text-center mb-4">Add Candidate Batch</h2>
+    <div className="flex justify-center items-center min-h-screen bg-blue-950 text-white p-4">
+      <div className="w-full md:w-4/5 lg:w-4/5 xl:w-4/5 bg-blue-900 p-6 rounded-lg shadow-lg">
+        
+        {/* Organization's Requirement Section */}
+        <div className="bg-blue-800 border-2 border-gray-500 p-4 rounded-md mb-6">
+          <h2 className="text-lg font-bold mb-3">Organization's Requirement</h2>
+          <textarea
+            value={orgRequirement}
+            onChange={(e) => setOrgRequirement(e.target.value)}
+            placeholder="Describe the role's responsibilities and expectations"
+            className="w-full h-40 p-3 bg-blue-950 border border-gray-500 rounded-md text-white placeholder-blue-300 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></textarea>
+        </div>
 
-        <label className="block font-semibold mb-1">Organization Requirement</label>
-        <textarea
-          value={orgRequirement}
-          onChange={(e) => setOrgRequirement(e.target.value)}
-          placeholder="Enter requirement (common for all candidates)"
-          className="w-full p-2 mb-3 border border-gray-300 rounded-lg"
-        />
-
-        <label className="block font-semibold mb-1">Candidate Emails</label>
-        <div>
+        {/* Candidate Email Section */}
+        <div className="bg-blue-800 border-2 border-gray-500 p-4 rounded-md mb-4">
+          <h2 className="text-lg font-bold mb-3">Candidate's Email</h2>
           {emails.map((email, index) => (
-            <div key={index} className="flex gap-2 mb-2">
+            <div key={index} className="mb-4">
+              <label className="block text-blue-300 mb-1">Candidate {index + 1}</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => handleEmailChange(index, e.target.value)}
-                placeholder="Enter candidate email"
-                className="flex-1 p-2 border border-gray-300 rounded-lg"
+                placeholder="Enter candidate's email"
+                className="w-full p-3 bg-blue-950 border border-gray-500 rounded-md text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           ))}
         </div>
 
-        <button
-          type="button"
-          onClick={addEmailField}
-          className="bg-green-500 text-white px-4 py-2 rounded-lg mr-2 hover:bg-green-600"
-        >
-          + Add Candidate
-        </button>
-
-        <button
-          type="button"
-          onClick={submitBatch}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-        >
-          Submit Batch
-        </button>
+        {/* Buttons */}
+        <div className="flex justify-between items-center mt-6">
+          <button
+            type="button"
+            onClick={addEmailField}
+            className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-400"
+          >
+            + Add Candidate
+          </button>
+          <button
+            type="button"
+            onClick={submitBatch}
+            className="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );
