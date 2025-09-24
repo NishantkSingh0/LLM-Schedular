@@ -59,7 +59,7 @@ export default function AddCandidateBatch() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-blue-950 text-white p-4">
       <div className="w-full md:w-4/5 lg:w-4/5 xl:w-4/5 bg-blue-900 p-6 rounded-lg shadow-lg">
-        
+
         {/* Organization's Requirement Section */}
         <div className="bg-blue-800 border-2 border-gray-500 p-4 rounded-md mb-6">
           <h2 className="text-lg font-bold mb-3">Organization's Requirement</h2>
@@ -93,15 +93,15 @@ export default function AddCandidateBatch() {
           <button
             type="button"
             onClick={addEmailField}
-            className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors focus:outline-none focus:ring-2 focus:ring-green-400"
-          >
+            className="bg-green-500 text-white px-5 py-2 rounded-lg font-semibold border-2 border-transparent hover:border-green-400 hover:bg-green-600 transition-colors focus:outline-none"          
+            >
             + Add Candidate
           </button>
           <button
             type="button"
             onClick={submitBatch}
-            className="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
+            className="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold border-2 border-transparent hover:border-blue-400 hover:bg-blue-700 transition-colors focus:outline-none"          
+            >
             Submit
           </button>
         </div>
