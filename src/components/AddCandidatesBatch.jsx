@@ -88,7 +88,7 @@ export default function AddCandidateBatch() {
           ))}
         </div>
 
-        {/* Buttons */}
+        {/* Both add and submit  Buttons */}
         <div className="flex justify-between items-center mt-6">
           <button
             type="button"
