@@ -8,6 +8,7 @@ import OrgLogin from "./components/OrgLogin.jsx";
 import CandidateLogin from "./components/candLogin.jsx";
 import Animate from "./components/AnimatePages.jsx"
 import LoginUi from "./components/LoginPage.jsx";
+import HomePage from './components/HomePage.jsx';
 import ScreenWarning from './components/NoMob.jsx';
 import ScheduleInterview from "./components/LLMSchedular.jsx";
 import InterviewRulesPage from "./components/RulesPage.jsx";
@@ -23,12 +24,15 @@ function App() {
   }
 
   return (
+    // <>
+    //     <HomePage/>
+    // </>
       <div className="relative min-h-screen bg-gray-900">
         <AnimatePresence mode="wait">
           <Toaster position="top-right" reverseOrder={false} />
           <Routes>
-            <Route path="/" element={ <LoginUi />} />
-            
+            <Route path="/" element={<HomePage />} />
+            {/* <Route path="/Login" element={<Animate><LoginUi /></Animate>} /> */}
             <Route path="/Student" element={<Animate><StudentLogin /></Animate>} />
             <Route path="/Candidate" element={<Animate><CandidateLogin /></Animate>} />
             <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
