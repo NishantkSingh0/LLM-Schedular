@@ -67,21 +67,22 @@ const PreInterviewCheck = () => {
 
   // Start Interview handler
   const handleStartInterview = () => {
-    if (cameraVerified && micVerified) {
-      navigate("/interview", { state: { stream: streamRef.current } });
-    }
+    navigate("/Interview")
+    // if (cameraVerified && micVerified) {
+    //   navigate("/interview", { state: { stream: streamRef.current } });
+    // }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <h1 className="text-2xl font-bold mb-4">Pre-Interview Check</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-6">
+      {/* <h1 className="text-2xl font-bold text-gray-200 mb-4">Pre-Interview Check</h1> */}
 
-      <div className="flex flex-col lg:flex-row bg-white shadow-md rounded-lg w-full max-w-5xl overflow-hidden">
+      <div className="flex flex-col lg:flex-row bg-gray-800 shadow-blue-700 border-b-gray-950 text-amber-50 shadow-lg rounded-lg w-full max-w-6xl overflow-hidden">
         {/* Left Section: Camera & Mic Test */}
-        <div className="w-full lg:w-1/2 p-6 space-y-6 border-r">
+        <div className="w-full lg:w-[40%] p-6 space-y-6 ">
           {/* Camera Test */}
           <div>
-            <h2 className="text-lg font-semibold">Camera Test</h2>
+            <h2 className="text-lg text-gray-200 font-semibold">Camera Test</h2>
             <video
               ref={videoRef}
               autoPlay
@@ -110,11 +111,11 @@ const PreInterviewCheck = () => {
           {/* Start Interview Button */}
           <button
             onClick={handleStartInterview}
-            disabled={!(cameraVerified && micVerified)}
+            // disabled={!(cameraVerified && micVerified)}
             className={`w-full px-4 py-2 rounded-lg mt-4 ${
               cameraVerified && micVerified
                 ? "bg-green-500 text-white hover:bg-green-600"
-                : "bg-gray-400 text-gray-200 cursor-not-allowed"
+                : "bg-amber-800 text-gray-200 cursor-not-allowed"
             }`}
           >
             Start Interview
@@ -124,17 +125,17 @@ const PreInterviewCheck = () => {
         </div>
 
         {/* Right Section: About / Guidelines */}
-        <div className="w-full lg:w-1/2 bg-white p-8 flex flex-col justify-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <div className="w-full lg:w-[60%] bg-gray-900/50  p-8 flex flex-col justify-center">
+          <h1 className="text-4xl font-bold text-gray-200 mb-4">
             Camera & Mic Access
           </h1>
-          <div className="text-gray-600 space-y-4">
+          <div className="text-gray-200 space-y-4">
             <p>
               Velora AI requires access to your camera and microphone to ensure a
               smooth and reliable interview experience. This helps interviewers
               connect with you seamlessly and maintain the quality of the session.
             </p>
-            <div className="bg-gray-100 p-4 rounded-lg">
+            <div className="bg-gray-700 p-4 rounded-lg">
               <h3 className="font-semibold mb-2">Interview Guidelines</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Make sure your camera is positioned at eye level.</li>
@@ -146,7 +147,7 @@ const PreInterviewCheck = () => {
                 </li>
               </ul>
             </div>
-            <div className="text-sm text-gray-600 italic">
+            <div className="text-sm text-gray-200 italic">
               <p>
                 <b>Note:</b> Your camera and microphone will only be used during
                 the interview. Velora AI respects your privacy and does not record

@@ -29,7 +29,7 @@ export default function CandidateLogin() {
   const handleSubmit = () => {
     // toast.success("LogedIn");
     console.log(formData);
-    navigate('/Interview')
+    navigate('/verification')
   };
 
   const handleNext = (e) => {
