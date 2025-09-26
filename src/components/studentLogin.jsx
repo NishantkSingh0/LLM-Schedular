@@ -64,7 +64,7 @@ export default function StudentLogin() {
       return;
     }
     toast.success("All fields are valid!");
-    navigate('/Interview')
+    navigate('/verification')
   };
 
   return (
