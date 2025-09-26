@@ -12,17 +12,24 @@ const ExamPage = () => {
   }, [location]);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-950 p-6 text-white">
       {/* Left Camera Panel */}
-      <div className="w-1/4 bg-white shadow-md p-4 flex flex-col items-center">
-        <h2 className="text-lg font-semibold mb-2">Camera Feed</h2>
-        <video ref={videoRef} autoPlay playsInline className="w-full rounded-md border" />
+      <div className="w-1/4 bg-gray-900 border border-gray-700 rounded-xl p-6 flex flex-col">
+        <h2 className="text-lg font-semibold text-gray-200 mb-4">Camera Feed</h2>
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          className="w-full aspect-video rounded-lg border border-gray-700 bg-gray-800"
+        />
       </div>
 
       {/* Right Exam Panel */}
-      <div className="flex-1 p-6">
-        <h1 className="text-2xl font-bold mb-4">Exam Started</h1>
-        <p className="text-gray-700">Your questions will appear here...</p>
+      <div className="flex-1 bg-gray-900 border border-gray-700 rounded-xl p-6 ml-6">
+        <h1 className="text-xl font-bold text-gray-100">Exam Started</h1>
+        <p className="text-purple-400 mt-2">
+          Your questions will appear here...
+        </p>
       </div>
     </div>
   );
