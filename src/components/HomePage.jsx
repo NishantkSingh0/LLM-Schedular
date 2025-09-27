@@ -70,7 +70,7 @@ export default function DropboxFrontPage() {
         <nav className="w-full bg-gray-700 max-w-full px-28 flex justify-between items-center py-4">
             <a href="https://NishantkSingh0.github.io/Resume-Builder" title="Our Resume builder helps you design you resume at end Timing" target="_blank">
               <span className="group">
-                <span className="text-black text-xl dark:text-slate-300 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-pink-500 group-hover:to-red-500">
+                <span className="text-xl text-slate-300 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-pink-500 group-hover:to-red-500">
                   Design your Resume
                 </span>
               </span>
@@ -186,9 +186,9 @@ export default function DropboxFrontPage() {
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="#" className="hover:text-white">What's new We provide</a></li>
-              <li><a href="#Home" className="hover:text-white">Home</a></li>
-              <li><a href="#Features" className="hover:text-white">Features</a></li>
-              <li><a href="#" className="hover:text-white">Pricing</a></li>
+              <li><a href="#Home" className="hover:text-white">Home Page</a></li>
+              <li><a href="#Features" className="hover:text-white">Features Page</a></li>
+              <li><a href="#" className="hover:text-white">Pricing Section</a></li>
             </ul>
           </div>
 
@@ -206,7 +206,7 @@ export default function DropboxFrontPage() {
 
         {/* Bottom */}
         <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} <a href="https://nishantksingh0.github.io" target="_blank" className="hover:text-white">nishantksingh0.github.io</a>. All rights reserved.
+          © {new Date().getFullYear()} <a href="https://nishantksingh0.github.io" target="_blank" >nishantksingh0.github.io</a>. All rights reserved.
         </div>
       </footer>
 
