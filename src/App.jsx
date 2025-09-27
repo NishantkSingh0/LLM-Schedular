@@ -20,12 +20,6 @@ import ExamPage from "./components/ExamPage.jsx";
 
 function App() {
 
-  const isDesktop = window.innerWidth >= 1024;
-
-  if (!isDesktop) {
-    return <ScreenWarning />;       // Smaller Screens not Allowed
-  }
-
   return (
     // <>
     //     <HomePage/>
