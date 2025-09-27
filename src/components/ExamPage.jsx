@@ -1,9 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import ScreenWarning from './NoMob.jsx';
 
 const ExamPage = () => {
   const location = useLocation();
   const videoRef = useRef(null);
+
+  if (window.innerWidth < 1024) {
+    return <ScreenWarning />;  // Smaller screens not allowed
+  }
 
   useEffect(() => {
     if (location.state && location.state.stream && videoRef.current) {

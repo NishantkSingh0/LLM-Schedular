@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ScreenWarning from './NoMob.jsx';
 import { Camera, CheckCircle, ArrowRight, Video, VideoOff } from 'lucide-react';
 
 const InterviewRulesPage = () => {
@@ -6,6 +7,10 @@ const InterviewRulesPage = () => {
   const [rulesAccepted, setRulesAccepted] = useState(false);
   const [stream, setStream] = useState(null);
   const videoRef = useRef(null);
+
+  if (window.innerWidth < 1024) {
+    return <ScreenWarning />;  // Smaller screens not allowed
+  }
 
   const startCamera = async () => {
     try {

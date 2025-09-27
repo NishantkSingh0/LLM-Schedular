@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import ScreenWarning from './NoMob.jsx';
 
 const PreInterviewCheck = () => {
   const [cameraVerified, setCameraVerified] = useState(false);
@@ -9,6 +10,10 @@ const PreInterviewCheck = () => {
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const navigate = useNavigate();
+  
+  if (window.innerWidth < 1024) {
+    return <ScreenWarning />;  // Smaller screens not allowed
+  }
 
   // Camera verification on load
   useEffect(() => {
