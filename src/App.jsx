@@ -12,6 +12,7 @@ import ScreenWarning from './components/NoMob.jsx';
 import ScheduleInterview from "./components/LLMSchedular.jsx";
 import InterviewRulesPage from "./components/RulesPage.jsx";
 import AddCandidateBatch from "./components/AddCandidatesBatch.jsx";
+import PricingPage from './components/PricingPage.jsx';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
             <Route path="/Organization/Add_Candidates" element={<Animate><AddCandidateBatch /></Animate>} />
             <Route path="/Interview" element={<Animate><ScheduleInterview /></Animate>} />
+            
 
           </Routes>
         </AnimatePresence>
