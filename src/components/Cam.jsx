@@ -105,7 +105,6 @@ const PreInterviewCheck = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-6">
       <div className="flex flex-col lg:flex-row bg-gray-800 shadow-blue-700 border-b-gray-950 text-amber-50 shadow-lg rounded-lg w-full max-w-6xl overflow-hidden">
-        
         {/* Left Section: Camera & Mic Test */}
         <div className="w-full lg:w-[40%] p-6 space-y-6 ">
           {/* Camera Test */}
@@ -149,7 +148,7 @@ const PreInterviewCheck = () => {
           {/* Start Interview Button */}
           <button
             onClick={handleStartInterview}
-            disabled={!(cameraVerified && micVerified)}
+            // disabled={!(cameraVerified && micVerified)}
             className={`w-full px-4 py-2 rounded-lg mt-4 ${
               cameraVerified && micVerified
                 ? "bg-green-500 text-white hover:bg-green-600"
