@@ -41,8 +41,8 @@ function App() {
           <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
           <Route path="/Organization/Add_Candidates" element={<Animate><AddCandidateBatch /></Animate>} />
           <Route path="/Interview" element={<Animate><ScheduleInterview /></Animate>} />
-          <Route path="/verification" element={<Cam />} />
-          <Route path="/exam" element={<ExamPage />} />
+          <Route path="/verification" element={<Animate><Cam /></Animate>} />
+          <Route path="/exam" element={<Animate><ExamPage /></Animate>} />
 
         </Routes>
       </AnimatePresence>

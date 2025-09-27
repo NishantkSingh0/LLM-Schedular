@@ -7,16 +7,14 @@ export default function DropboxFrontPage() {
     const navigate = useNavigate();
     
   const images = [
-    "https://via.placeholder.com/600x400.png?text=Feature+1",
-    "https://via.placeholder.com/600x400.png?text=Feature+2",
-    "https://via.placeholder.com/600x400.png?text=Feature+3",
-    "https://via.placeholder.com/600x400.png?text=Feature+4",
-    "https://via.placeholder.com/600x400.png?text=Feature+5",
-    "https://via.placeholder.com/600x400.png?text=Feature+6",
-    "https://via.placeholder.com/600x400.png?text=Feature+7",
-    "https://via.placeholder.com/600x400.png?text=Feature+8",
-    "https://via.placeholder.com/600x400.png?text=Feature+9",
-    "https://via.placeholder.com/600x400.png?text=Feature+10",
+    "Marketing/IMG-1.jpg",
+    "Marketing/IMG-2.jpg",
+    "Marketing/IMG-3.jpg",
+    "Marketing/IMG-4.jpg",
+    "Marketing/IMG-5.jpg",
+    "Marketing/IMG-6.jpg",
+    "Marketing/IMG-7.jpg",
+    // "Marketing/IMG-1.jpg",
   ];
 
   const Features = [
@@ -124,6 +122,7 @@ export default function DropboxFrontPage() {
                 src="HomePageInterviewShowcase.png"
                 alt="Dropbox preview"
                 className="w-full h-full object-cover"
+                draggable="false"
               />
             </div>
           </motion.div>
@@ -158,7 +157,8 @@ export default function DropboxFrontPage() {
                 <img
                   src={images[index] || ""}
                   alt={`feature-${index}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-[300px] object-fill"
+                  draggable="false"
                 />
               </motion.div>
             );
