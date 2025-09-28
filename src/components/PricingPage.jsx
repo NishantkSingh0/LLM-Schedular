@@ -17,11 +17,11 @@ export default function PricingPage({ initialData }) {
   const [batchData, setBatchData] = useState(initialData || defaultBatch);
 
   const plans = [
-    { id: 1, title: "Essential", price: 188.99, storage: "600 GB", users: 4, send: "5 GB", tokens: 10 },
-    { id: 2, title: "Deluxe", price: 349.99, storage: "5 TB", users: 10, send: "10 GB", tokens: 30 },
-    { id: 3, title: "Premium", price: 499.99, storage: "20 TB", users: 40, send: "100 GB", tokens: 40 },
+    { id: 1, title: "Essential", price: 188, storage: "600 GB", users: 4, send: "5 GB", tokens: 10, Gradient: "bg-gradient-to-r from-gray-500 to-blue-gray-700 border-4 border-gray-600" },
+    { id: 2, title: "Deluxe", price: 349, storage: "5 TB", users: 10, send: "10 GB", tokens: 30, Gradient: "bg-gradient-to-r from-blue-500 to-green-400 border-4 border-blue-500" },
+    { id: 3, title: "Premium", price: 499, storage: "20 TB", users: 40, send: "100 GB", tokens: 40, Gradient: "bg-gradient-to-r from-purple-600 to-pink-600 border-4 border-blue-500" },
+    { id: 4, title: "Most Savings", price: 599, storage: "20 TB", users: 80, send: "100 GB", tokens: 80, Gradient: "bg-gradient-to-r from-orange-500 to-red-500 border-4 border-orange-500" },
   ];
-
   
   const handlePurchase = (tokensToAdd) => {
     const updated = { ...batchData, Tokens: batchData.Tokens + tokensToAdd };

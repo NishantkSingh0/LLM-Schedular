@@ -191,7 +191,7 @@ export default function DropboxFrontPage() {
               <li><a href="#" className="hover:text-white">What's new We provide</a></li>
               <li><a href="#Home" className="hover:text-white">Home Page</a></li>
               <li><a href="#Features" className="hover:text-white">Features Page</a></li>
-              <li><a href="#" className="hover:text-white">Pricing Section</a></li>
+              <li><a href="https://nishantksingh0.github.io/LLM-Schedular/#/Pricings" className="hover:text-white">Pricing Section</a></li>
             </ul>
           </div>
 
