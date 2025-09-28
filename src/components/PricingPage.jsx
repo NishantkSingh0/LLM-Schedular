@@ -1,22 +1,36 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
-export default function PricingPage() {
+export default function PricingPage({ initialData }) {
   const [selected, setSelected] = useState(null);
 
-  // ----- CONFIG: change these to adjust card size / spacing -----
-  // Change card vertical padding to increase/decrease card height (e.g. 'py-6' or 'py-10')
-  const CARD_VERTICAL_PADDING = "py-20"; // <-- change height here
-  // Change card width (small / medium) for all cards
-  const CARD_WIDTH = "w-72 md:w-56"; // <-- change width here
-  // Change gap between cards
-  const CARD_GAP = "gap-2 md:gap-4"; // <-- change spacing here
-  // ----------------------------------------------------------------
+  const CARD_VERTICAL_PADDING = "py-20"; 
+
+  const CARD_WIDTH = "w-72 md:w-56"; 
+  
+  const CARD_GAP = "gap-2 md:gap-4"; 
+
+
+  // batch JSON state (keeps track of Tokens). Falls back to sample if no prop passed.
+  const defaultBatch = { Type: "batchA", Tokens: 0, id: "batch123" };
+  const [batchData, setBatchData] = useState(initialData || defaultBatch);
 
   const plans = [
-    { id: 1, title: "Essential", price: 188.99, storage: "600 GB", users: 4, send: "5 GB" },
-    { id: 2, title: "Deluxe", price: 349.99, storage: "5 TB", users: 10, send: "10 GB" },
-    { id: 3, title: "Premium", price: 499.99, storage: "20 TB", users: 40, send: "100 GB" },
+    { id: 1, title: "Essential", price: 188.99, storage: "600 GB", users: 4, send: "5 GB", tokens: 10 },
+    { id: 2, title: "Deluxe", price: 349.99, storage: "5 TB", users: 10, send: "10 GB", tokens: 30 },
+    { id: 3, title: "Premium", price: 499.99, storage: "20 TB", users: 40, send: "100 GB", tokens: 40 },
   ];
+
+  
+  const handlePurchase = (tokensToAdd) => {
+    const updated = { ...batchData, Tokens: batchData.Tokens + tokensToAdd };
+    setBatchData(updated);
+
+   
+    console.log("Updated batchData:", updated);
+
+    // toast.error(`Purchased ${tokensToAdd} tokens — New total: ${updated.Tokens}`);
+  };
 
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center text-white p-6">
@@ -49,9 +63,12 @@ export default function PricingPage() {
               </ul>
 
               <div className="flex justify-center w-full mt-auto">
-                {/* Button is now fixed to white with purple text and will NOT change color on hover or selection */}
-                <button className="px-6 py-2 rounded-lg font-semibold transition-all duration-300 bg-white text-purple-700">
-                  READ MORE
+                {/* ADDED FUNCTIONALITY: clicking this will increment tokens, log JSON, and show a toast.error */}
+                <button
+                  onClick={() => handlePurchase(plan.tokens)}
+                  className="px-6 py-2 rounded-lg font-semibold transition-all duration-300 bg-white text-purple-700"
+                >
+                  PURCHASE
                 </button>
               </div>
             </div>
