@@ -129,8 +129,9 @@ export default function DropboxFrontPage() {
 
       {/* Marketing Section */}
       <section id="Features" className="w-full hidden lg:block bg-black py-15">
-        <div className="flex items-center text-gray-300 justify-center mb-15">
+        <div className="flex flex-col items-center text-gray-300 justify-center mb-15">
           <h1 className="text-2xl font-bold font-sans">Workflow and Schedules</h1>
+          <div className="w-[15%] h-1 bg-blue-900 mb-6 mx-auto mt-1 rounded dark:bg-amber-800"></div>
         </div>
         <div className="max-w-6xl mx-auto flex justify-center items-center gap-6">
           {[leftIndex, activeIndex, rightIndex].map((index, i) => {
@@ -191,7 +192,7 @@ export default function DropboxFrontPage() {
               <li><a href="#" className="hover:text-white">What's new We provide</a></li>
               <li><a href="#Home" className="hover:text-white">Home Page</a></li>
               <li><a href="#Features" className="hover:text-white">Features Page</a></li>
-              <li><a href="#" className="hover:text-white">Pricing Section</a></li>
+              <li><a href="https://nishantksingh0.github.io/LLM-Schedular/#/Pricings" target="_blank" className="hover:text-white">Pricing Section</a></li>
             </ul>
           </div>
 
