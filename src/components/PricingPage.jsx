@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import toast from "react-hot-toast";
-
 export default function PricingPage({ initialData }) {
   const [selected, setSelected] = useState(null);
 
@@ -17,9 +15,10 @@ export default function PricingPage({ initialData }) {
   const [batchData, setBatchData] = useState(initialData || defaultBatch);
 
   const plans = [
-    { id: 1, title: "Essential", price: 188.99, storage: "600 GB", users: 4, send: "5 GB", tokens: 10 },
-    { id: 2, title: "Deluxe", price: 349.99, storage: "5 TB", users: 10, send: "10 GB", tokens: 30 },
-    { id: 3, title: "Premium", price: 499.99, storage: "20 TB", users: 40, send: "100 GB", tokens: 40 },
+    { id: 1, title: "Essential", price: 188, storage: "600 GB", users: 4, send: "5 GB", tokens: 10, Gradient: "bg-gradient-to-r from-gray-500 to-blue-gray-700 border-4 border-gray-600" },
+    { id: 2, title: "Deluxe", price: 349, storage: "5 TB", users: 10, send: "10 GB", tokens: 30, Gradient: "bg-gradient-to-r from-blue-500 to-green-400 border-4 border-blue-500" },
+    { id: 3, title: "Premium", price: 499, storage: "20 TB", users: 40, send: "100 GB", tokens: 40, Gradient: "bg-gradient-to-r from-purple-600 to-pink-600 border-4 border-blue-500" },
+    { id: 4, title: "Most Savings", price: 599, storage: "20 TB", users: 80, send: "100 GB", tokens: 80, Gradient: "bg-gradient-to-r from-orange-500 to-red-500 border-4 border-orange-500" },
   ];
 
   
@@ -47,14 +46,14 @@ export default function PricingPage({ initialData }) {
               onMouseLeave={() => setSelected(null)}
               className={`rounded-2xl shadow-lg px-6 ${CARD_VERTICAL_PADDING} flex flex-col items-center transition-all duration-300 border ${CARD_WIDTH} ${
                 isSelected
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 border-4 border-blue-500 -translate-y-10 text-white z-30 shadow-2xl"
+                  ? `${plan.Gradient} -translate-y-10 text-white z-30 shadow-2xl`
                   : "bg-gray-900 border-gray-700 text-gray-200 hover:-translate-y-10 hover:shadow-purple-500/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600"
               }`}
             >
               <h3 className={`text-lg font-semibold mb-3 ${isSelected ? "text-white" : "text-gray-200"}`}>{plan.title}</h3>
 
               <p className={`text-3xl font-extrabold mb-6 ${isSelected ? "text-white" : "text-gray-200"}`}>
-                ${plan.price.toFixed(2)}
+                ₹{plan.price}
               </p>
 
               <ul className={`text-sm space-y-2 mb-6 text-center ${isSelected ? "text-white/90" : "text-gray-300"}`}>
