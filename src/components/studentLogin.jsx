@@ -2,6 +2,7 @@ import { useState } from "react";
 import Suggestions from "./Suggestions.jsx";
 import { Upload, FileText } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
+import ScreenWarning from './NoMob.jsx';
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -10,6 +11,9 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export default function StudentLogin() {
 
+  if (window.innerWidth < 1024) {
+    return <ScreenWarning />;  // Smaller screens not allowed
+  }
 
   const [formData, setFormData] = useState({
     designation: "",
@@ -64,7 +68,7 @@ export default function StudentLogin() {
       return;
     }
     toast.success("All fields are valid!");
-    navigate('/Interview')
+    navigate('/verification')
   };
 
   return (

@@ -1,0 +1,78 @@
+AI-Powered Interview in Action
+
+- Image Concept: A split-screen image showing a candidate speaking confidently into a microphone or webcam on one side, and an AI interface analyzing responses in real-time (with graphs or keyword highlights) on the other.
+- Purpose: Showcases the interactive voice-based interview process and AI-driven evaluation.
+- Visual Elements: Futuristic UI with glowing elements, a confident candidate, and real-time analytics (e.g., a dashboard with scores for knowledge, confidence, etc.).
+- Why It Works: Highlights the core AI technology and candidate experience, making it relatable for both organizations and individuals.
+
+
+Organization Dashboard
+
+- Image Concept: A sleek web interface screenshot showing an HR professional’s dashboard with options like “Add Candidate Emails,” “Set Job Requirements,” and a credit balance.
+- Purpose: Demonstrates ease of use for organizations.
+- Visual Elements: Clean, modern UI with vibrant colors (e.g., blue and white for trust and professionalism), charts showing candidate progress, and a “Buy Credits” button.
+- Why It Works: Appeals to HR teams by showcasing a user-friendly platform that simplifies bulk scheduling.
+
+
+Candidate Success Moment
+
+- Image Concept: A joyful candidate receiving a high score on their evaluation report, with a celebratory animation (e.g., confetti or a “Congratulations!” banner).
+- Purpose: Emphasizes the rewarding outcome for individuals using the platform.
+- Visual Elements: A vibrant report card with scores for knowledge, confidence, and resume fit, displayed on a laptop or mobile screen.
+- Why It Works: Creates an emotional connection by showing the end goal—success and validation.
+
+
+Cost-Effectiveness Comparison
+
+- Image Concept: A visually striking infographic comparing traditional HR interview costs (e.g., ₹5000+) vs. your solution (₹15-20 per interview).
+- Purpose: Highlights the affordability of your platform.
+- Visual Elements: A bar chart or pie chart with contrasting colors (red for traditional costs, green for your solution), accompanied by icons of money and time savings.
+- Why It Works: Visually communicates the value proposition of cost savings, appealing to budget-conscious organizations.
+
+
+Resume Analysis Process
+
+- Image Concept: An animated depiction of a resume being uploaded, with AI scanning it and highlighting keywords that match company requirements.
+- Purpose: Showcases the ATS (Applicant Tracking System) and AI-driven resume analysis.
+- Visual Elements: A resume document with glowing keywords, connected to a futuristic AI interface with checkmarks or scores.
+- Why It Works: Demonstrates the technical sophistication of your platform in a visually engaging way.
+
+
+Global Accessibility
+
+- Image Concept: A world map with pins or glowing dots representing candidates and organizations using the platform worldwide.
+- Purpose: Highlights the platform’s scalability and accessibility for global users.
+- Visual Elements: A stylized globe with vibrant connections (e.g., lines linking countries), and icons of diverse candidates and HR professionals.
+- Why It Works: Appeals to organizations with international hiring needs and individuals seeking global opportunities.
+
+
+Voice Mode Interaction
+
+- Image Concept: A candidate speaking into a microphone, with soundwaves transforming into text on a screen, analyzed by AI.
+- Purpose: Emphasizes the voice-based interview feature.
+- Visual Elements: Dynamic soundwave visuals, a modern headset, and an AI interface displaying transcribed text with highlighted keywords.
+- Why It Works: Showcases the innovative voice-to-text and AI analysis feature, making it stand out.
+
+
+Candidate Report Visualization
+
+- Image Concept: A detailed candidate evaluation report with scores for knowledge, confidence, and resume fit, displayed as a sleek infographic or dashboard.
+- Purpose: Highlights the actionable insights provided to organizations.
+- Visual Elements: A polished report with colorful charts (e.g., radar or bar charts), a professional layout, and an HR manager reviewing it.
+- Why It Works: Shows organizations the value of data-driven hiring decisions.
+
+
+Individual Candidate Journey
+
+- Image Concept: A timeline or flowchart showing a student’s journey—registering, paying ₹15, uploading a resume, answering questions, and receiving a score.
+- Purpose: Illustrates the seamless process for individual users.
+- Visual Elements: A clean, step-by-step visual with icons for each stage (e.g., a wallet for payment, a resume icon, a microphone for voice answers).
+- Why It Works: Makes the process clear and approachable for students or job seekers.
+
+
+Team Collaboration
+
+- Image Concept: A group of HR professionals reviewing candidate scores together on a large screen, with your platform’s interface prominently displayed.
+- Purpose: Highlights how the platform supports team-based hiring decisions.
+- Visual Elements: A modern office setting, a large monitor displaying candidate reports, and diverse team members discussing results.
+- Why It Works: Appeals to organizations by showing collaborative and efficient hiring workflows.
