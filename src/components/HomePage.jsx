@@ -4,19 +4,15 @@ import { useState, useEffect } from "react";
 import Typed from "typed.js"; 
 
 export default function DropboxFrontPage() {
-    const navigate = useNavigate();
-    
+  const navigate = useNavigate();  
   const images = [
-    "https://via.placeholder.com/600x400.png?text=Feature+1",
-    "https://via.placeholder.com/600x400.png?text=Feature+2",
-    "https://via.placeholder.com/600x400.png?text=Feature+3",
-    "https://via.placeholder.com/600x400.png?text=Feature+4",
-    "https://via.placeholder.com/600x400.png?text=Feature+5",
-    "https://via.placeholder.com/600x400.png?text=Feature+6",
-    "https://via.placeholder.com/600x400.png?text=Feature+7",
-    "https://via.placeholder.com/600x400.png?text=Feature+8",
-    "https://via.placeholder.com/600x400.png?text=Feature+9",
-    "https://via.placeholder.com/600x400.png?text=Feature+10",
+    "Marketing/IMG-1.jpg",
+    "Marketing/IMG-2.jpg",
+    "Marketing/IMG-3.jpg",
+    "Marketing/IMG-4.jpg",
+    "Marketing/IMG-5.jpg",
+    "Marketing/IMG-6.jpeg",
+    "Marketing/IMG-7.jpg",
   ];
 
   const Features = [
@@ -67,10 +63,10 @@ export default function DropboxFrontPage() {
       {/* Hero section */}
       <section id="Home" className="min-h-screen bg-gray-900 py-10">
         {/* Top Navigation */}
-        <nav className="w-full bg-gray-700 max-w-full px-28 flex justify-between items-center py-4">
+        <nav className="w-full bg-gray-700 max-w-full px-4 md:px-28 flex justify-between items-center py-4">
             <a href="https://NishantkSingh0.github.io/Resume-Builder" title="Our Resume builder helps you design you resume at end Timing" target="_blank">
               <span className="group">
-                <span className="text-black text-xl dark:text-slate-300 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-pink-500 group-hover:to-red-500">
+                <span className="text-xl text-slate-300 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-pink-500 group-hover:to-red-500">
                   Design your Resume
                 </span>
               </span>
@@ -82,7 +78,7 @@ export default function DropboxFrontPage() {
         </nav>
 
         {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto mt-20 gap-10">
+        <div className="flex flex-col px-4 md:flex-row items-center justify-between max-w-6xl mx-auto mt-20 gap-10">
           {/* LEFT: Text Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -93,7 +89,7 @@ export default function DropboxFrontPage() {
             <h2 className="text-blue-600 font-semibold">
               AI Based Hiring Management
             </h2>
-            <h1 className="text-5xl text-gray-300 font-bold mt-4">
+            <h1 className="text-4xl md:text-5xl text-gray-300 font-bold mt-4">
               Smarter Hiring.<br />Faster Scheduling.
             </h1>
             <p className="text-gray-400 mt-4 text-lg max-w-md">
@@ -124,6 +120,7 @@ export default function DropboxFrontPage() {
                 src="HomePageInterviewShowcase.png"
                 alt="Dropbox preview"
                 className="w-full h-full object-cover"
+                draggable="false"
               />
             </div>
           </motion.div>
@@ -158,7 +155,8 @@ export default function DropboxFrontPage() {
                 <img
                   src={images[index] || ""}
                   alt={`feature-${index}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-[300px] object-fill"
+                  draggable="false"
                 />
               </motion.div>
             );
@@ -170,15 +168,20 @@ export default function DropboxFrontPage() {
 
       </section>
 
-      <footer className="bg-gray-900 text-gray-300 py-12">
+      <footer className="bg-gray-950 text-gray-300 py-12">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-10">
 
           {/* About Section */}
-          <div className="flex-1">
+          <div className="hidden md:block flex-1">
             <h2 className="text-xl font-bold text-white mb-4">Make Interviews Smarter + Deeper</h2>
             <p className="text-gray-400 max-w-sm">
               Streamline your hiring process with AI-powered interviews, automated scheduling, and comprehensive candidate evaluation. Accessible for organizations and individuals at an affordable cost.
             </p>
+          </div>
+          <div className="block md:hidden flex-1">
+            <h2 className="text-xl font-bold text-white mb-4">Less Features and View in Mob View</h2>
+            <p className="text-gray-400 max-w-sm">
+              Mobile view has limited functionality and features. For the best experience, please use our service on a desktop.            </p>
           </div>
 
           {/* Quick Links */}
@@ -186,9 +189,9 @@ export default function DropboxFrontPage() {
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="#" className="hover:text-white">What's new We provide</a></li>
-              <li><a href="#Home" className="hover:text-white">Home</a></li>
-              <li><a href="#Features" className="hover:text-white">Features</a></li>
-              <li><a href="#" className="hover:text-white">Pricing</a></li>
+              <li><a href="#Home" className="hover:text-white">Home Page</a></li>
+              <li><a href="#Features" className="hover:text-white">Features Page</a></li>
+              <li><a href="#" className="hover:text-white">Pricing Section</a></li>
             </ul>
           </div>
 
@@ -206,7 +209,7 @@ export default function DropboxFrontPage() {
 
         {/* Bottom */}
         <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} <a href="https://nishantksingh0.github.io" target="_blank" className="hover:text-white">nishantksingh0.github.io</a>. All rights reserved.
+          © {new Date().getFullYear()} <a href="https://nishantksingh0.github.io" target="_blank" >nishantksingh0.github.io</a>. All rights reserved.
         </div>
       </footer>
 

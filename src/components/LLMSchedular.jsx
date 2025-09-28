@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ScreenWarning from './NoMob.jsx';
 import {Activity, Pause, Mic, MicOff, SkipForward,Circle } from 'lucide-react';
 import toast from "react-hot-toast";
 
@@ -10,6 +11,10 @@ const ScheduleInterview = () => {
     orgNeed: "Software Development",
     positionLevel: "Senior"
   };
+
+  if (window.innerWidth < 1024) {
+    return <ScreenWarning />;  // Smaller screens not allowed
+  }
 
   // State management
   const [userData] = useState(initialData);
@@ -288,7 +293,7 @@ const TTS = async (text) => {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">Loading questions...</div>
+        <div className="text-white text-xl">Loading ...</div>
       </div>
     );
   }
