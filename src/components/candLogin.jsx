@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Upload, FileText } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
+import ScreenWarning from './NoMob.jsx';
 import toast from "react-hot-toast";
 
 export default function CandidateLogin() {
@@ -10,6 +11,10 @@ export default function CandidateLogin() {
     password: "",
     resume: null,
   });
+
+  if (window.innerWidth < 1024) {
+    return <ScreenWarning />;  // Smaller screens not allowed
+  }
 
   const navigate=useNavigate();
 
@@ -29,7 +34,7 @@ export default function CandidateLogin() {
   const handleSubmit = () => {
     // toast.success("LogedIn");
     console.log(formData);
-    navigate('/Interview')
+    navigate('/verification')
   };
 
   const handleNext = (e) => {

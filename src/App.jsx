@@ -8,38 +8,42 @@ import OrgLogin from "./components/OrgLogin.jsx";
 import CandidateLogin from "./components/candLogin.jsx";
 import Animate from "./components/AnimatePages.jsx"
 import LoginUi from "./components/LoginPage.jsx";
+import HomePage from './components/HomePage.jsx';
 import ScreenWarning from './components/NoMob.jsx';
 import ScheduleInterview from "./components/LLMSchedular.jsx";
 import InterviewRulesPage from "./components/RulesPage.jsx";
 import AddCandidateBatch from "./components/AddCandidatesBatch.jsx";
 import PricingPage from './components/PricingPage.jsx';
+import Cam from "./components/Cam.jsx";
+import ExamPage from "./components/ExamPage.jsx";
+
 
 
 function App() {
 
-  const isDesktop = window.innerWidth >= 1024;
-
-  if (!isDesktop) {
-    return <ScreenWarning />;       // Smaller Screens not Allowed
-  }
-
   return (
-      <div className="relative min-h-screen bg-gray-900">
-        <AnimatePresence mode="wait">
-          <Toaster position="top-right" reverseOrder={false} />
-          <Routes>
-            <Route path="/" element={ <LoginUi />} />
-            
-            <Route path="/Student" element={<Animate><StudentLogin /></Animate>} />
-            <Route path="/Candidate" element={<Animate><CandidateLogin /></Animate>} />
-            <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
-            <Route path="/Organization/Add_Candidates" element={<Animate><AddCandidateBatch /></Animate>} />
-            <Route path="/Interview" element={<Animate><ScheduleInterview /></Animate>} />
-            
+    // <>
+    //     <HomePage/>
+    // </>
+    <div className="relative min-h-screen bg-gray-900">
+      <AnimatePresence mode="wait">
+        <Toaster position="top-right" reverseOrder={false} />
+        <Routes>
+    
+          <Route path="/" element={<HomePage />} />
+          {/* <Route path="/Login" element={<Animate><LoginUi /></Animate>} /> */}
+          <Route path="/Student" element={<Animate><StudentLogin /></Animate>} />
+          <Route path="/Candidate" element={<Animate><CandidateLogin /></Animate>} />
+          <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
+          <Route path="/Pricings" element={<Animate><PricingPage /></Animate>} />
+          <Route path="/Organization/Add_Candidates" element={<Animate><AddCandidateBatch /></Animate>} />
+          <Route path="/Interview" element={<Animate><ScheduleInterview /></Animate>} />
+          <Route path="/verification" element={<Animate><Cam /></Animate>} />
+          <Route path="/exam" element={<Animate><ExamPage /></Animate>} />
 
-          </Routes>
-        </AnimatePresence>
-      </div>
+        </Routes>
+      </AnimatePresence>
+    </div>
   )
 }
 
