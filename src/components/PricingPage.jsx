@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import toast from "react-hot-toast";
 
 export default function PricingPage({ initialData }) {
@@ -74,6 +75,7 @@ export default function PricingPage({ initialData }) {
             </div>
           );
         })}
+
       </div>
     </div>
   );
