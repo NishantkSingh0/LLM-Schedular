@@ -2,3 +2,4 @@ backend/venv/
 node_modules
 /dist
 Backend/private.txt
+*.env
