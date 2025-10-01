@@ -20,7 +20,6 @@ export default function PricingPage({ initialData }) {
     { id: 3, title: "Premium", price: 499, storage: "20 TB", users: 40, send: "100 GB", tokens: 40, Gradient: "bg-gradient-to-r from-purple-600 to-pink-600 border-4 border-blue-500" },
     { id: 4, title: "Most Savings", price: 599, storage: "20 TB", users: 80, send: "100 GB", tokens: 80, Gradient: "bg-gradient-to-r from-orange-500 to-red-500 border-4 border-orange-500" },
   ];
-
   
   const handlePurchase = (tokensToAdd) => {
     const updated = { ...batchData, Tokens: batchData.Tokens + tokensToAdd };
