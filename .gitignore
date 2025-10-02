@@ -3,3 +3,4 @@ node_modules
 /dist
 Backend/private.txt
 *.env
+*__pycache__

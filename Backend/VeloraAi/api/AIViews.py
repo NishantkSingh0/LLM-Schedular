@@ -3,16 +3,21 @@ from rest_framework.response import Response
 from io import BytesIO
 from django.http import FileResponse
 
+# Wakeup endpoint
+@api_view(['GET'])
+def wakeup(request):
+    print("Wakeup ping received — server is alive!")
+    return Response(status=204)  # No content, returns instantly
 
 # TTS endpoint
 @api_view(['POST'])
-def send_audio(request):
+def tts(request):
     text = request.data.get("text")
-    print("Request made")
+    print("Request made (TTS)")
 
-    with open("InterviewSchedular.wav", "rb") as f:
+    with open("static/InterviewSchedular.wav", "rb") as f:
         audio_bytes = f.read()
-
+    print("Audio readed successfully")
     audio_buffer = BytesIO(audio_bytes)
     return FileResponse(audio_buffer, as_attachment=False, filename="tts.wav", content_type='audio/wav')
 
