@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import toast from "react-hot-toast";
-
 export default function PricingPage({ initialData }) {
   const [selected, setSelected] = useState(null);
 
@@ -47,14 +45,14 @@ export default function PricingPage({ initialData }) {
               onMouseLeave={() => setSelected(null)}
               className={`rounded-2xl shadow-lg px-6 ${CARD_VERTICAL_PADDING} flex flex-col items-center transition-all duration-300 border ${CARD_WIDTH} ${
                 isSelected
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 border-4 border-blue-500 -translate-y-10 text-white z-30 shadow-2xl"
+                  ? `${plan.Gradient} -translate-y-10 text-white z-30 shadow-2xl`
                   : "bg-gray-900 border-gray-700 text-gray-200 hover:-translate-y-10 hover:shadow-purple-500/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600"
               }`}
             >
               <h3 className={`text-lg font-semibold mb-3 ${isSelected ? "text-white" : "text-gray-200"}`}>{plan.title}</h3>
 
               <p className={`text-3xl font-extrabold mb-6 ${isSelected ? "text-white" : "text-gray-200"}`}>
-                ${plan.price.toFixed(2)}
+                ₹{plan.price}
               </p>
 
               <ul className={`text-sm space-y-2 mb-6 text-center ${isSelected ? "text-white/90" : "text-gray-300"}`}>
