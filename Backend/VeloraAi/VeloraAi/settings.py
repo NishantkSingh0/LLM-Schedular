@@ -43,10 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'api',
-    # 'Student',
-    # 'OrgInfo',
-    # 'BatchesStack',
-    # 'InterviewScores',
 ]
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:5173']
