@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+from urllib.parse import quote_plus
 
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))  # move to parent directory
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,19 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'corsheaders',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api'
+    'api',
+    # 'Student',
+    # 'OrgInfo',
+    # 'BatchesStack',
+    # 'InterviewScores',
 ]
 
+CORS_ALLOWED_ORIGINS = ['http://localhost:5173']
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -77,21 +85,20 @@ WSGI_APPLICATION = 'VeloraAi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+usn, psw=os.getenv('mongodbCREDENTIALS').split(':')
 
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'InterviewSchedular',  # Example: interviewdb
+        'NAME': 'InterviewSchedular',
         'CLIENT': {
-            'host': f"mongodb+srv://{os.getenv("mongodbCREDENTIALS")}@veloraai.pxsrftr.mongodb.net",
-            'port': 27017,
-            'username': os.getenv("mongodbCREDENTIALS").split(':')[0],
-            'password': os.getenv("mongodbCREDENTIALS").split(':')[1],
-            'authSource': "admin",
+            'host': f"mongodb+srv://{usn}:{quote_plus(psw)}@veloraai.pxsrftr.mongodb.net/?retryWrites=true&w=majority&appName=VeloraAI",
+            'authSource': 'admin',  # optional, usually admin
         }
     }
 }
 
+# print(usn,'|||',quote_plus(psw))
 
 
 # Password validation

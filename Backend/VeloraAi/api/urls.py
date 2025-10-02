@@ -1,11 +1,9 @@
 from django.urls import path
-from . import OrgDBViews
-from . import StdDBViews
-from . import AIViews
+from . import OrgDBViews, AIViews, StdDBViews
 
 urlpatterns = [
     path('wakeup/', AIViews.wakeup),
-    path('tts/', AIViews.send_audio),
+    path('tts/', AIViews.tts),
     path('stt/', AIViews.stt),
     path('qns/', AIViews.generate_questions),
 
