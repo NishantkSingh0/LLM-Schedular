@@ -8,6 +8,7 @@ import OrgLogin from "./components/OrgLogin.jsx";
 import CandidateLogin from "./components/candLogin.jsx";
 import Animate from "./components/AnimatePages.jsx"
 import LoginUi from "./components/LoginPage.jsx";
+import EmailValidation from './components/EmailLoginPage.jsx';
 import HomePage from './components/HomePage.jsx';
 import ScreenWarning from './components/NoMob.jsx';
 import ScheduleInterview from "./components/LLMSchedular.jsx";
@@ -23,7 +24,7 @@ function App() {
 
   return (
     // <>
-    //     <HomePage/>
+    //     <EmailValidation/>
     // </>
     <div className="relative min-h-screen bg-gray-900">
       <AnimatePresence mode="wait">
@@ -35,6 +36,7 @@ function App() {
           <Route path="/Student" element={<Animate><StudentLogin /></Animate>} />
           <Route path="/Candidate" element={<Animate><CandidateLogin /></Animate>} />
           <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
+          <Route path="/EmailVerification" element={<Animate><EmailValidation /></Animate>} />
           <Route path="/Pricings" element={<Animate><PricingPage /></Animate>} />
           <Route path="/Organization/Add_Candidates" element={<Animate><AddCandidateBatch /></Animate>} />
           <Route path="/Interview" element={<Animate><ScheduleInterview /></Animate>} />
