@@ -31,6 +31,12 @@ export default function DropboxFrontPage() {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // WakeUp the Server
+  useEffect(() => {
+      fetch("http://127.0.0.1:8000/wakeup/")     // http://127.0.0.1:8000/wakeup    ---    https://llm-schedular.onrender.com/wakeup
+        .catch(() => {}); // ignore any errors
+  }, []);
   
   useEffect(() => {
     const typed=new Typed("#desktop-typing-text",{
@@ -66,11 +72,10 @@ export default function DropboxFrontPage() {
         <nav className="w-full bg-gray-700 max-w-full px-4 md:px-28 flex justify-between items-center py-4">
             <a href="https://NishantkSingh0.github.io/Resume-Builder" title="Our Resume builder helps you design you resume at end Timing" target="_blank">
               <span className="group">
-                <span className="text-xl text-slate-300 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-pink-500 group-hover:to-red-500">
+                <span className="text-xl text-slate-300 transition-all duration-500 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:via-pink-500 group-hover:to-red-300">
                   Design your Resume
                 </span>
               </span>
-
             </a>
           <div className="flex gap-4">
             <button className="px-4 py-2 bg-blue-600  text-white rounded-lg hover:bg-blue-700">What's new</button>
@@ -87,7 +92,7 @@ export default function DropboxFrontPage() {
             className="flex-1 text-left"
           >
             <h2 className="text-blue-600 font-semibold">
-              AI Based Hiring Management
+              AI Based Hiring Management System
             </h2>
             <h1 className="text-4xl md:text-5xl text-gray-300 font-bold mt-4">
               Smarter Hiring.<br />Faster Scheduling.
@@ -129,8 +134,9 @@ export default function DropboxFrontPage() {
 
       {/* Marketing Section */}
       <section id="Features" className="w-full hidden lg:block bg-black py-15">
-        <div className="flex items-center text-gray-300 justify-center mb-15">
+        <div className="flex flex-col items-center text-gray-300 justify-center mb-15">
           <h1 className="text-2xl font-bold font-sans">Workflow and Schedules</h1>
+          <div className="w-[15%] h-1 bg-blue-900 mb-6 mx-auto mt-1 rounded dark:bg-amber-800"></div>
         </div>
         <div className="max-w-6xl mx-auto flex justify-center items-center gap-6">
           {[leftIndex, activeIndex, rightIndex].map((index, i) => {
@@ -191,7 +197,7 @@ export default function DropboxFrontPage() {
               <li><a href="#" className="hover:text-white">What's new We provide</a></li>
               <li><a href="#Home" className="hover:text-white">Home Page</a></li>
               <li><a href="#Features" className="hover:text-white">Features Page</a></li>
-              <li><a href="#" className="hover:text-white">Pricing Section</a></li>
+              <li><a href="https://nishantksingh0.github.io/LLM-Schedular/#/Pricings" className="hover:text-white">Pricing Section</a></li>
             </ul>
           </div>
 

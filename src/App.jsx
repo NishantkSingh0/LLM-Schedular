@@ -29,7 +29,7 @@ function App() {
       <AnimatePresence mode="wait">
         <Toaster position="top-right" reverseOrder={false} />
         <Routes>
-    
+
           <Route path="/" element={<HomePage />} />
           {/* <Route path="/Login" element={<Animate><LoginUi /></Animate>} /> */}
           <Route path="/Student" element={<Animate><StudentLogin /></Animate>} />

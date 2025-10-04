@@ -37,7 +37,7 @@ const ScheduleInterview = () => {
 
   const fetchQuestions = async (orgNeed, positionLevel) => {
     try {
-      const response = await fetch("https://llm-schedular.onrender.com/qns", {              // http://127.0.0.1:5000
+      const response = await fetch("http://127.0.0.1:8000/qns/", {              // https://llm-schedular.onrender.com/qns   ---   http://127.0.0.1:8000
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -69,7 +69,7 @@ const ScheduleInterview = () => {
       const formData = new FormData();
       formData.append("file", RecordingBlob, "audio.wav");
 
-      const response = await fetch("https://llm-schedular.onrender.com/stt", {                 // http://127.0.0.1:5000
+      const response = await fetch("http://127.0.0.1:8000/stt/", {                 // https://llm-schedular.onrender.com/stt   ----   http://127.0.0.1:8000
         method: "POST",
         body: formData,
       });
@@ -117,7 +117,7 @@ const ScheduleInterview = () => {
 
 const TTS = async (text) => {
   try {
-    const response = await fetch("https://llm-schedular.onrender.com/tts", {               // http://127.0.0.1:5000
+    const response = await fetch("http://127.0.0.1:8000/tts/", {               // https://llm-schedular.onrender.com/tts   ---   http://127.0.0.1:8000
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text })
@@ -157,11 +157,11 @@ const TTS = async (text) => {
         }));
         
         // Auto-play the audio
-        // toast.success("Auto Playing the audio");
+        toast.success("Auto Playing the audio");
         playTTSAudio(audioBlob);
       } else {
         // Use cached audio
-        // toast.success("Playing the audio from cache");
+        toast.success("Playing the audio from cache");
         playTTSAudio(ttsCache[currentQuestionIndex]);
       }
     } catch (err) {
@@ -180,10 +180,10 @@ const TTS = async (text) => {
       try {
         await audioRef.current.play();
         setIsPlaying(true);
-        // toast.success("Audio is playing");
+        toast.success("Audio is playing");
       } catch (err) {
         console.error("Autoplay failed:", err);
-        // toast.error("Autoplay blocked! Click Replay to play manually.");
+        toast.error("Autoplay blocked! Click Replay to play manually.");
       }
 
       // Optional: revoke URL after playback to free memory
@@ -282,7 +282,7 @@ const TTS = async (text) => {
 
   const replayTTS = () => {
     if (ttsCache[currentQuestionIndex]) {
-      // toast.success("RePlaying the audio");
+      toast.success("RePlaying the audio");
       setReplayCount(prev => prev+1)
       setIsRecording(false)
       SetIsNext(false)
