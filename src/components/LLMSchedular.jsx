@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ScreenWarning from './NoMob.jsx';
-import {Activity, Pause, Mic, MicOff, SkipForward,Circle } from 'lucide-react';
+import {RotateCw, Pause, Mic, MicOff, SkipForward,Circle } from 'lucide-react';
 import toast from "react-hot-toast";
 
 const ScheduleInterview = () => {
@@ -354,7 +354,7 @@ const TTS = async (text) => {
               title={ReplayCount>2?'Disabled..':'Replay question audio'}
               className={`flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 ${(ReplayCount>2 || isPlaying)?'cursor-pointer':''} disabled:bg-gray-600 text-white rounded-lg transition-colors ${"cursor-blocked"}`}
             >
-              {isPlaying ? <Pause className="w-5 h-5" /> : <Activity className="w-5 h-5" />}
+              {isPlaying ? <Pause className="w-5 h-5" /> : <RotateCw className="w-5 h-5" />}
             </button>
 
             <div title={isRecording ? "Your answer is recording" : "Microphone is off"} className={`flex items-center px-4 py-2 rounded-lg ${

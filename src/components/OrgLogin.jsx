@@ -1,33 +1,72 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation  } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function OrgLogin() {
   const navigate = useNavigate();
+  const location = useLocation();
   const levels=["Startup", "Growing", "Mature", "Enterprise"]
   const [orgDetails, setOrgDetails] = useState({
-    orgId: "",
-    orgName: "",
-    orgEmail: "",
-    orgType: "",
+    Email: "",
+    Name: "",
+    Tokens: 0,
+    OrgSize: "",
+    CandNames: ['None'],
+    CandScores: ['None'],
+    ResumeInfos: ['None'],
   });
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (location.state?.email) {
+      setOrgDetails((prev) => ({ ...prev, Email: location.state.email }));
+    }
+  }, [location.state?.email]);
 
   const handleChange = (e) => {
     setOrgDetails({ ...orgDetails, [e.target.name]: e.target.value });
   };
+
   const handleRadioChange = (e) => {
-    setOrgDetails({ ...orgDetails, orgType: e.target.value });
+    setOrgDetails({ ...orgDetails, OrgSize: e.target.value });
   };
 
-  const handleNext = () => {
-    if (!orgDetails.orgId || !orgDetails.orgName || !orgDetails.orgEmail || !orgDetails.orgType) {
-      toast.error("Please fill all fields and upload a PDF resume!");
+  const handleNext = async () => {
+    if (!orgDetails.Name || !orgDetails.Email || !orgDetails.OrgSize) {
+      toast.error("Please fill all fields.. Before proceeding further");
       return;
     }
     console.log(orgDetails)
     // toast.success("Form Filled successfully. But nothing to naviagete")
     // navigate("/organization/pay", { state: orgDetails });
-    navigate('/Organization/Add_Candidates')
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/create-org/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orgDetails),
+      });
+
+      const result = await response.json();
+      console.log("Server Response:", result);
+
+      if (result.status === "created") {
+        toast.success("Organization created successfully!");
+        // Navigate to Add_Candidates with newly created org data
+        navigate("/Organization/Add_Candidates", { state: result.data });
+      } else {
+        toast.error("Failed to create organization!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+    // navigate('/Organization/Add_Candidates')
   };
 
   return (
@@ -40,34 +79,22 @@ export default function OrgLogin() {
               <label className="block text-sm font-medium">Organization Name</label>
               <input
                 type="text"
-                name="orgName"
+                name="Name"
                 placeholder='xyz pvt ltd'
                 className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
-                value={orgDetails.orgName}
+                value={orgDetails.Name}
                 onChange={handleChange}
               />
               <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
           </div>
           <div className="space-y-2 mb-4">
-            <label className="block text-sm font-medium">Create a unique OrgId</label>
-            <input
-              type="text"
-              name="orgId"
-              placeholder='xyz@1'
-              className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
-              value={orgDetails.orgId}
-              onChange={handleChange}
-            />
-            <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
-          </div>
-          <div className="space-y-2 mb-4">
               <label className="block text-sm font-medium">Organization Email</label>
               <input
                 type="text"
-                name="orgEmail"
+                name="Email"
                 placeholder='admin@example.com'
                 className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
-                value={orgDetails.orgEmail}
+                value={orgDetails.Email}
                 onChange={handleChange}
               />
               <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
@@ -78,13 +105,13 @@ export default function OrgLogin() {
             </label>
 
             <div className="flex gap-3 justify-center">
-              {levels.map((orgType) => (
+              {levels.map((OrgSize) => (
                 <label
-                  key={orgType}
+                  key={OrgSize}
                   className={`px-4 py-2 rounded-2xl cursor-pointer shadow-sm transition-all 
                     border text-sm font-medium
                     ${
-                      orgDetails.orgType === orgType
+                      orgDetails.OrgSize === OrgSize
                         ? "bg-blue-500 text-white shadow-md border-blue-600"
                         : "bg-gray-600 text-white hover:bg-gray-700 border-gray-300"
                     }`}
@@ -92,20 +119,29 @@ export default function OrgLogin() {
                   <input
                     type="radio"
                     name="orgType"
-                    value={orgType}
+                    value={OrgSize}
                     onChange={handleRadioChange}
                     className="hidden"
                   />
-                  {orgType}
+                  {OrgSize}
                 </label>
               ))}
             </div>
           </div>
         <button
           onClick={handleNext}
-          className="w-full mt-6 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold cursor-pointer"
+          disabled={loading}
+          className={`w-full mt-6 py-3 rounded-lg font-semibold cursor-pointer flex items-center justify-center gap-2 ${
+            loading
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700"
+          }`}
         >
-          Next 
+          {loading ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            "Next"
+          )}
         </button>
       </div>
     </div>

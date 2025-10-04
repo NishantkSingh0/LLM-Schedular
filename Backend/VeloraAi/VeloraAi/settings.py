@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from dotenv import load_dotenv
-from pathlib import Path
 import os
+from pathlib import Path
 from urllib.parse import quote_plus
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))  # move to parent directory
@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-151uprpxblx&rgt7+x%i$u^xfefrok$sw&4+obdv^-xkf2@uu-'
+SECRET_KEY = os.getenv('DjongoSECRETKEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,18 +81,18 @@ WSGI_APPLICATION = 'VeloraAi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-usn, psw=os.getenv('mongodbCREDENTIALS').split(':')
+# usn, psw=os.getenv('mongodbCREDENTIALS').split(':')
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'InterviewSchedular',
-        'CLIENT': {
-            'host': f"mongodb+srv://{usn}:{quote_plus(psw)}@veloraai.pxsrftr.mongodb.net/?retryWrites=true&w=majority&appName=VeloraAI",
-            'authSource': 'admin',  # optional, usually admin
-        }
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': '',
+#         'NAME': 'InterviewSchedular',
+#         'CLIENT': {
+#             'host': f"mongodb+srv://{usn}:{quote_plus(psw)}@veloraai.pxsrftr.mongodb.net/?retryWrites=true&w=majority&appName=VeloraAI",
+#             'authSource': 'admin',  # optional, usually admin
+#         }
+#     }
+# }
 
 # print(usn,'|||',quote_plus(psw))
 

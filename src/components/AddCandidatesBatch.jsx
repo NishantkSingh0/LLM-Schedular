@@ -61,18 +61,18 @@ export default function AddCandidateBatch() {
       <div className="w-full md:w-4/5 lg:w-4/5 xl:w-4/5 bg-gray-800 p-6 rounded-lg shadow-lg">
 
         {/* Organization's Requirement Section */}
-        <div className="bg-gray-900 border-2 border-gray-500 p-4 rounded-md mb-6">
+        <div className="bg-gray-800 border-2 border-gray-500 p-4 rounded-md mb-6">
           <h2 className="text-lg font-bold mb-3">Organization's Requirement</h2>
           <textarea
             value={orgRequirement}
             onChange={(e) => setOrgRequirement(e.target.value)}
             placeholder="Describe the role's responsibilities and expectations"
-            className="w-full h-40 p-3 bg-blue-950 border border-gray-500 rounded-md text-white placeholder-blue-300 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full h-40 p-3 bg-gray-900 border border-gray-500 rounded-md text-white placeholder-blue-300 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
 
         {/* Candidate Email Section */}
-        <div className="bg-gray-900 border-2 border-gray-500 p-4 rounded-md mb-4">
+        <div className="bg-gray-800 border-2 border-gray-500 p-4 rounded-md mb-4">
           <h2 className="text-lg font-bold mb-3">Candidate's Email</h2>
           {emails.map((email, index) => (
             <div key={index} className="mb-4">
@@ -82,7 +82,7 @@ export default function AddCandidateBatch() {
                 value={email}
                 onChange={(e) => handleEmailChange(index, e.target.value)}
                 placeholder="Enter candidate's email"
-                className="w-full p-3 bg-blue-950 border border-gray-500 rounded-md text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 bg-gray-900 border border-gray-500 rounded-md text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           ))}

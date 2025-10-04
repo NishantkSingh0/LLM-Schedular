@@ -104,10 +104,10 @@ export default function DropboxFrontPage() {
               all in one place.
             </p>
             <div className="flex gap-4 mt-6">
-              <button onClick={() => navigate("/Organization")} className="px-4 py-2 rounded-lg text-gray-200 cursor-pointer bg-gray-800 hover:bg-gray-800/50">
+              <button onClick={() => navigate("/EmailVerification",{ state: { from: "Org" } })} className="px-4 py-2 rounded-lg text-gray-200 cursor-pointer bg-gray-800 hover:bg-gray-800/50">
                 Organization Login
               </button>
-              <button onClick={() => navigate("/Student")} className="px-4 py-2 rounded-full bg-blue-600 text-white cursor-pointer hover:bg-blue-700">
+              <button onClick={() => navigate("/EmailVerification", { state: { from: "Std" } })} className="px-4 py-2 rounded-full bg-blue-600 text-white cursor-pointer hover:bg-blue-700">
                 Student Login
               </button>
             </div>
