@@ -47,58 +47,58 @@ const PreInterviewCheck = () => {
   };
 
   // Microphone Test
-  const verifyMic = async () => {
-    try {
-      const audioStream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-      });
+ const verifyMic = async () => {
+  try {
+    const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-      const audioContext = new (window.AudioContext ||
-        window.webkitAudioContext)();
-      const analyser = audioContext.createAnalyser();
-      const source = audioContext.createMediaStreamSource(audioStream);
-      source.connect(analyser);
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const analyser = audioContext.createAnalyser();
+    const source = audioContext.createMediaStreamSource(audioStream);
+    source.connect(analyser);
 
-      analyser.fftSize = 256;
-      const bufferLength = analyser.frequencyBinCount;
-      const dataArray = new Uint8Array(bufferLength);
+    analyser.fftSize = 256;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
 
-      let detectionTimeout;
-      let soundDetected = false;
+    let soundDetected = false;
+    const startTime = Date.now();
 
-      const checkMic = () => {
-        analyser.getByteFrequencyData(dataArray);
-        const volume = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
-        setMicVolume(volume);
+    const checkMic = () => {
+      analyser.getByteFrequencyData(dataArray);
+      const volume = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
+      setMicVolume(volume);
 
-        if (volume > 10) {
-          soundDetected = true;
+      if (volume > 10) {
+        soundDetected = true;
+      }
+
+      const elapsed = (Date.now() - startTime) / 1000;
+
+      if (elapsed >= 5) { // ✅ must run for 5s
+        if (soundDetected) {
+
           setMicVerified(true);
-          clearTimeout(detectionTimeout);
-          audioStream.getTracks().forEach((track) => track.stop());
-          audioContext.close();
+          setError(null);
         } else {
-          requestAnimationFrame(checkMic);
-        }
-      };
-
-      // Wait minimum 5s for sound
-      detectionTimeout = setTimeout(() => {
-        if (!soundDetected) {
           setMicVerified(false);
-          audioStream.getTracks().forEach((track) => track.stop());
-          audioContext.close();
-          setError("No sound detected. Please speak and try again.");
+          setError("No sound detected. Please speak into the mic.");
         }
-      }, 5000);
 
-      checkMic();
-    } catch (err) {
-      console.error("Microphone error:", err);
-      setError("Microphone not detected");
-      setMicVerified(false);
-    }
-  };
+        audioStream.getTracks().forEach(track => track.stop());
+        audioContext.close();
+      } else {
+        requestAnimationFrame(checkMic);
+      }
+    };
+
+    checkMic();
+  } catch (err) {
+    console.error("Microphone error:", err);
+    setError("Microphone not detected");
+    setMicVerified(false);
+  }
+};
+
 
   // Start Interview handler
   const handleStartInterview = () => {
