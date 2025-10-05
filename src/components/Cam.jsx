@@ -76,6 +76,7 @@ const PreInterviewCheck = () => {
 
       if (elapsed >= 5) { // ✅ must run for 5s
         if (soundDetected) {
+
           setMicVerified(true);
           setError(null);
         } else {
