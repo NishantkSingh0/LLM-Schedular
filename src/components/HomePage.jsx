@@ -66,7 +66,7 @@ export default function DropboxFrontPage() {
       {/* Hero section */}
       <section id="Home" className="min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-10 text-white flex flex-col">
         <nav className="flex items-center justify-between px-10 py-4 border-y border-gray-700 sticky top-0 backdrop-blur-lg z-50">
-          <div className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <div className="hidden md:block text-xl font-bold bg-gradient-to-r  from-blue-400 to-purple-500 bg-clip-text text-transparent">
             AI Hiring System
           </div>
           <div className="flex items-center gap-6">
@@ -131,7 +131,7 @@ export default function DropboxFrontPage() {
           >
             <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-700 bg-gray-900">
               <img
-                src="public/HomePageInterviewShowcase.png"
+                src="HomePageInterviewShowcase.png"
                 alt="AI Interview"
                 className="w-full h-full object-cover"
                 draggable="false"
