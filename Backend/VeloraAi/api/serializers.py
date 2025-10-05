@@ -20,7 +20,7 @@ class StudentSerializer(serializers.Serializer):
     ExpectedPosition = serializers.CharField(max_length=255, allow_blank=True)
     Designation = serializers.CharField(max_length=255, allow_blank=True)
     Resume = serializers.CharField(allow_blank=True)
-    Scores = serializers.DictField(child=serializers.ListField(), default=list)
+    Scores = serializers.ListField(default=list)
     OurFeedback = serializers.CharField(allow_blank=True, default="")
     ImprovementsNeeded = serializers.CharField(allow_blank=True, default="")
 

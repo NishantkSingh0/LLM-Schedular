@@ -46,14 +46,41 @@ export default function StudentLogin() {
   };
 
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
+
     if (file && file.type === "application/pdf") {
-      setFormData({ ...formData, Resume: file });
+      
+      // Prepare form data for upload
+      const formDataToSend = new FormData();
+      formDataToSend.append("Resume", file);
+      
+      try {
+        const res = await fetch("http://127.0.0.1:8000/ParseResumes/", {
+          method: "POST",
+          body: formDataToSend,
+        });
+        
+        if (!res.ok) throw new Error("Failed to upload resume");
+        
+        const data = await res.json();
+        console.log("Parsed Resume Text:", data); // or data.text depending on backend
+        setFormData({ ...formData, Resume: data.parsed_text});
+        
+        toast.success("Resume parsed successfully!");
+
+        // optionally set parsed text in state
+        // setParsedText(data.text);
+
+      } catch (err) {
+        console.error("Error:", err);
+        toast.error("Error uploading or parsing resume");
+      }
     } else {
-      alert("Please upload a PDF file only!");
+      toast.error("Please upload a PDF file only!");
     }
   };
+
 
   const handleGoogleLogin = async () => {
     // try {

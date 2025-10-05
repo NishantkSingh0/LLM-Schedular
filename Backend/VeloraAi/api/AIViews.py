@@ -1,5 +1,7 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, parser_classes
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
+import pdfplumber
 from io import BytesIO
 from django.http import FileResponse
 
@@ -8,6 +10,27 @@ from django.http import FileResponse
 def wakeup(request):
     print("Wakeup ping received — server is alive!")
     return Response(status=204)  # No content, returns instantly
+
+# ParseResumes endpoint
+@api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser])
+def ParseResumes(request):
+    print("Request made (ParseResumes)")
+    file = request.FILES.get("Resume")
+    if not file:
+        return Response({"error": "No file provided"}, status=400)
+    try:
+        # Read PDF content directly from memory
+        pdf_bytes = BytesIO(file.read())
+        text = ""
+        with pdfplumber.open(pdf_bytes) as pdf:
+            for page in pdf.pages:
+                text += page.extract_text() or ""
+        print("Resume parsed successfully")
+        return Response({"parsed_text": text})
+    except Exception as e:
+        print("Error parsing resume:", e)
+        return Response({"error": str(e)}, status=500)
 
 # TTS endpoint
 @api_view(['POST'])

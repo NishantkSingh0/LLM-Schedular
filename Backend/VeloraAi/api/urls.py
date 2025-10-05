@@ -3,6 +3,7 @@ from . import OrgDBViews, AIViews, StdDBViews
 
 urlpatterns = [
     path('wakeup/', AIViews.wakeup),
+    path('ParseResumes/', AIViews.ParseResumes),
     path('tts/', AIViews.tts),
     path('stt/', AIViews.stt),
     path('qns/', AIViews.generate_questions),

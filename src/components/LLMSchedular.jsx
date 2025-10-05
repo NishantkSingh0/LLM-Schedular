@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ScreenWarning from './NoMob.jsx';
+import { useLocation  } from "react-router-dom";
 import {RotateCw, Pause, Mic, MicOff, SkipForward,Circle } from 'lucide-react';
 import toast from "react-hot-toast";
 
@@ -12,6 +13,10 @@ const ScheduleInterview = () => {
     positionLevel: "Senior"
   };
 
+// {
+// }
+
+  const location = useLocation();
   if (window.innerWidth < 1024) {
     return <ScreenWarning />;  // Smaller screens not allowed
   }
