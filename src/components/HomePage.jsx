@@ -65,28 +65,29 @@ export default function DropboxFrontPage() {
     <>
       {/* Hero section */}
       <section id="Home" className="min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-10 text-white flex flex-col">
-        <nav className="flex items-center justify-between px-10 py-4 border-b border-gray-700 sticky top-0 backdrop-blur-lg z-50">
-         <div className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-          AI Hiring System
-        </div>
+        <nav className="flex items-center justify-between px-10 py-4 border-y border-gray-700 sticky top-0 backdrop-blur-lg z-50">
+
+          <div className="hidden md:block text-xl font-bold bg-gradient-to-r  from-blue-400 to-purple-500 bg-clip-text text-transparent">
+
+            AI Hiring System
+          </div>
           <div className="flex items-center gap-6">
             <a 
               href="https://NishantkSingh0.github.io/Resume-Builder" 
               title="Our Resume builder helps you design your resume efficiently" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-lg font-medium text-slate-300 hover:text-white transition"
+              className="text-lg font-medium mr-5 text-slate-300 hover:text-white transition"
             >
               Design your Resume
             </a>
-        <button className="relative flex items-center w-[8.5em] h-[2.9em] border-[0.2em] border-[#3654ff] rounded-[11px] bg-transparent text-white overflow-hidden transition-all duration-500 hover:bg-[#3654ff]">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
-       className="w-6 h-6 ml-2 mr-2 transition-transform duration-500 ease-in-out hover:translate-x-1.5">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-  </svg>
-  <span className="ml-0.5">What's New</span>
-</button>
-
+            <button className="relative flex items-center w-[9.5em] h-[2.9em] border-[0.2em] border-[#3654ff] rounded-[11px] bg-transparent text-white overflow-hidden transition-all duration-500 hover:bg-[#3654ff]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
+                   className="w-6 h-6 ml-2 mr-2 transition-transform duration-500 ease-in-out hover:translate-x-1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              </svg>
+              <span className="ml-0.5 pr-1.5">What's New</span>
+            </button>
           </div>
         </nav>
 
@@ -132,7 +133,7 @@ export default function DropboxFrontPage() {
           >
             <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-700 bg-gray-900">
               <img
-                src="public/HomePageInterviewShowcase.png"
+                src="HomePageInterviewShowcase.png"
                 alt="AI Interview"
                 className="w-full h-full object-cover"
                 draggable="false"
@@ -214,7 +215,7 @@ export default function DropboxFrontPage() {
 
   {/* Footer Bottom */}
   <div className="mt-12 border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
-    © 2025 <a href="https://nishantksingh0.github.io" className="hover:text-teal-400 transition-colors">nishantksingh0.github.io</a>. All rights reserved.
+    © 2025 <a href="https://nishantksingh0.github.io" target="_blank" className="hover:text-teal-400 transition-colors">nishantksingh0.github.io</a>. All rights reserved.
   </div>
 </footer>
 

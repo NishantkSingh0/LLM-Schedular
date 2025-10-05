@@ -73,7 +73,6 @@ export default function PricingPage({ initialData }) {
             </div>
           );
         })}
-
       </div>
     </div>
   );
