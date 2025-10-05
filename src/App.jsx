@@ -8,6 +8,7 @@ import OrgLogin from "./components/OrgLogin.jsx";
 import CandidateLogin from "./components/candLogin.jsx";
 import Animate from "./components/AnimatePages.jsx"
 import LoginUi from "./components/LoginPage.jsx";
+import OrgDashboard from './components/OrgDashboard.jsx';
 import EmailValidation from './components/EmailLoginPage.jsx';
 import HomePage from './components/HomePage.jsx';
 import ScreenWarning from './components/NoMob.jsx';
@@ -15,7 +16,7 @@ import ScheduleInterview from "./components/LLMSchedular.jsx";
 import InterviewRulesPage from "./components/RulesPage.jsx";
 import AddCandidateBatch from "./components/AddCandidatesBatch.jsx";
 import PricingPage from './components/PricingPage.jsx';
-import Cam from "./components/Cam.jsx";
+import PreInterviewCheck from "./components/Cam.jsx";
 import ExamPage from "./components/ExamPage.jsx";
 
 
@@ -30,7 +31,6 @@ function App() {
       <AnimatePresence mode="wait">
         <Toaster position="top-right" reverseOrder={false} />
         <Routes>
-
           <Route path="/" element={<HomePage />} />
           {/* <Route path="/Login" element={<Animate><LoginUi /></Animate>} /> */}
           <Route path="/Student" element={<Animate><StudentLogin /></Animate>} />
@@ -38,11 +38,11 @@ function App() {
           <Route path="/Organization" element={<Animate><OrgLogin /></Animate>} />
           <Route path="/EmailVerification" element={<Animate><EmailValidation /></Animate>} />
           <Route path="/Pricings" element={<Animate><PricingPage /></Animate>} />
+          <Route path="/Organization/OrgDashboard" element={<Animate><OrgDashboard /></Animate>} />
           <Route path="/Organization/Add_Candidates" element={<Animate><AddCandidateBatch /></Animate>} />
           <Route path="/Interview" element={<Animate><ScheduleInterview /></Animate>} />
-          <Route path="/verification" element={<Animate><Cam /></Animate>} />
+          <Route path="/verification" element={<Animate><PreInterviewCheck /></Animate>} />
           <Route path="/exam" element={<Animate><ExamPage /></Animate>} />
-
         </Routes>
       </AnimatePresence>
     </div>

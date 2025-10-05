@@ -43,7 +43,7 @@ export default function OrgLogin() {
         // console.log("Status raw:", result.status, "| type:", typeof result.status, "not_found===result.status:", "not_found"===result.status);
         if (result.status === "exists") {
           toast.success("Organization found!");
-          navigate("/Organization/Add_Candidates", { state: result.data });
+          navigate("/Organization/OrgDashboard");//, { state: result.data });
         } else if (result.status === "not_found") {
           toast.error("Organization not found. Please register!");
           navigate("/Organization", { state: { email: Details.email } });

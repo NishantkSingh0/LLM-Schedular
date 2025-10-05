@@ -7,14 +7,25 @@ from .serializers import StudentSerializer
 # Create Student
 @api_view(['POST'])
 def create_student(request):
-    print("Data Received: ",request.data)
+    print("Data Received: ", request.data)
     serializer = StudentSerializer(data=request.data)
+    
     if serializer.is_valid():
         data = serializer.validated_data
+        
+        # Check if student already exists
         if std_collection.find_one({"StudentMail": data["StudentMail"]}):
             return Response({"status": "exists"}, status=200)
-        std_collection.insert_one(data)
+        
+        # Insert and capture result
+        result = std_collection.insert_one(data)
+        
+        # Convert ObjectId to string before returning
+        data["_id"] = str(result.inserted_id)
+        
         return Response({"status": "created", "data": data}, status=201)
+    
+    print("Serializer errors:", serializer.errors)
     return Response(serializer.errors, status=400)
 
 # Get Student by email

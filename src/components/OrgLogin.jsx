@@ -56,7 +56,7 @@ export default function OrgLogin() {
       if (result.status === "created") {
         toast.success("Organization created successfully!");
         // Navigate to Add_Candidates with newly created org data
-        navigate("/Organization/Add_Candidates", { state: result.data });
+        navigate("/Organization/OrgDashboard", { state: result.data });
       } else {
         toast.error("Failed to create organization!");
       }
