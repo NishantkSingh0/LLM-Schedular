@@ -10,7 +10,7 @@ def ExtractContent(ResumeText: str) -> dict:
     - Raw Resume: {ResumeText}"""+"""
     ### Output:
     Return a **valid JSON** in the following structure:
-
+ 
     {
       "InterviewInfo": {
         "areas": ["area1", "area2", "area3", "area4", "area5"],

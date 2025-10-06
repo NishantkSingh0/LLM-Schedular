@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ScreenWarning from "./NoMob.jsx";
 
 const PreInterviewCheck = () => {
@@ -14,6 +14,7 @@ const PreInterviewCheck = () => {
   if (window.innerWidth < 1024) {
     return <ScreenWarning />;
   }
+  const location=useLocation();
 
   // Camera Access Function
   const verifyCamera = async () => {
@@ -47,63 +48,63 @@ const PreInterviewCheck = () => {
   };
 
   // Microphone Test
- const verifyMic = async () => {
-  try {
-    const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  const verifyMic = async () => {
+    try {
+      const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const analyser = audioContext.createAnalyser();
-    const source = audioContext.createMediaStreamSource(audioStream);
-    source.connect(analyser);
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const analyser = audioContext.createAnalyser();
+      const source = audioContext.createMediaStreamSource(audioStream);
+      source.connect(analyser);
 
-    analyser.fftSize = 256;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
+      analyser.fftSize = 256;
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
 
-    let soundDetected = false;
-    const startTime = Date.now();
+      let soundDetected = false;
+      const startTime = Date.now();
 
-    const checkMic = () => {
-      analyser.getByteFrequencyData(dataArray);
-      const volume = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
-      setMicVolume(volume);
+      const checkMic = () => {
+        analyser.getByteFrequencyData(dataArray);
+        const volume = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
+        setMicVolume(volume);
 
-      if (volume > 10) {
-        soundDetected = true;
-      }
-
-      const elapsed = (Date.now() - startTime) / 1000;
-
-      if (elapsed >= 5) { // ✅ must run for 5s
-        if (soundDetected) {
-
-          setMicVerified(true);
-          setError(null);
-        } else {
-          setMicVerified(false);
-          setError("No sound detected. Please speak into the mic.");
+        if (volume > 10) {
+          soundDetected = true;
         }
+       
+        const elapsed = (Date.now() - startTime) / 1000;
+       
+        if (elapsed >= 5) { // ✅ must run for 5s
+          if (soundDetected) {
 
-        audioStream.getTracks().forEach(track => track.stop());
-        audioContext.close();
-      } else {
-        requestAnimationFrame(checkMic);
-      }
-    };
-
-    checkMic();
-  } catch (err) {
-    console.error("Microphone error:", err);
-    setError("Microphone not detected");
-    setMicVerified(false);
-  }
-};
+            setMicVerified(true);
+            setError(null);
+          } else {
+            setMicVerified(false);
+            setError("No sound detected. Please speak into the mic.");
+          }
+         
+          audioStream.getTracks().forEach(track => track.stop());
+          audioContext.close();
+        } else {
+          requestAnimationFrame(checkMic);
+        }
+      };
+     
+      checkMic();
+    } catch (err) {
+      console.error("Microphone error:", err);
+      setError("Microphone not detected");
+      setMicVerified(false);
+    }
+  };
 
 
   // Start Interview handler
   const handleStartInterview = () => {
     if (cameraVerified && micVerified) {
-      navigate("/Interview");
+      navigate("/Interview",{ state: location });
     } else {
       setError("Please verify camera and microphone first.");
     }

@@ -53,6 +53,28 @@ def update_tokens(request):
         return Response({"status": "tokens_updated", "tokens": student["Tokens"]})
     return Response({"error": "Student not found"}, status=404)
 
+
+# Update Resume text
+@api_view(['POST'])
+def update_resume(request):
+    email = request.data.get("email")
+    new_resume = request.data.get("resume")
+
+    if not email or not new_resume:
+        return Response({"status": "error", "message": "Email and resume content required"}, status=400)
+
+    result = std_collection.update_one(
+        {"StudentMail": email},
+        {"$set": {"Resume": new_resume}}
+    )
+
+    if result.modified_count > 0:
+        return Response({"status": "success", "message": "Resume updated successfully"})
+    elif result.matched_count > 0:
+        return Response({"status": "no_change", "message": "Resume content is same as before"})
+    else:
+        return Response({"status": "not_found", "message": "Student not found"})
+
 # Update Scores after Interview
 @api_view(['PUT'])
 def update_scores(request):

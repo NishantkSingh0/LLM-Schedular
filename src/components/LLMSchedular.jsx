@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ScreenWarning from './NoMob.jsx';
-import { useLocation  } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {RotateCw, Pause, Mic, MicOff, SkipForward,Circle } from 'lucide-react';
 import toast from "react-hot-toast";
 
@@ -12,9 +12,8 @@ const ScheduleInterview = () => {
     orgNeed: "Software Development",
     positionLevel: "Senior"
   };
-
-// {
-// }
+   
+  const [Info, setInfo] = useState("");
 
   const location = useLocation();
   if (window.innerWidth < 1024) {
@@ -39,6 +38,20 @@ const ScheduleInterview = () => {
   const audioRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const recordedChunks = useRef([]);
+
+  useEffect(() => {
+    const goFullScreen = async () => {
+      try {
+        const elem = document.documentElement; // entire page
+        if (elem.requestFullscreen) await elem.requestFullscreen();
+        else if (elem.webkitRequestFullscreen) await elem.webkitRequestFullscreen();
+        else if (elem.msRequestFullscreen) await elem.msRequestFullscreen();
+      } catch (err) {
+        console.error("Fullscreen request failed:", err);
+      }
+    };
+    goFullScreen();
+  }, []);
 
   const fetchQuestions = async (orgNeed, positionLevel) => {
     try {
@@ -120,25 +133,25 @@ const ScheduleInterview = () => {
     initializeQuestions();
   }, [userData.orgNeed, userData.positionLevel]);
 
-const TTS = async (text) => {
-  try {
-    const response = await fetch("http://127.0.0.1:8000/tts/", {               // https://llm-schedular.onrender.com/tts   ---   http://127.0.0.1:8000
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text })
-    });
+  const TTS = async (text) => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/tts/", {               // https://llm-schedular.onrender.com/tts   ---   http://127.0.0.1:8000
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
+      });
 
-    if (!response.ok) throw new Error("Failed to fetch TTS audio");
+      if (!response.ok) throw new Error("Failed to fetch TTS audio");
 
-    const arrayBuffer = await response.arrayBuffer();
-    const audioBlob = new Blob([arrayBuffer], { type: "audio/wav" });
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBlob = new Blob([arrayBuffer], { type: "audio/wav" });
 
-    return audioBlob;
-  } catch (error) {
-    console.error(error);
-    throw new Error("TTS conversion failed");
-  }
-};
+      return audioBlob;
+    } catch (error) {
+      console.error(error);
+      throw new Error("TTS conversion failed");
+    }
+  };
 
   // Handle TTS and auto-play when question changes
   useEffect(() => {

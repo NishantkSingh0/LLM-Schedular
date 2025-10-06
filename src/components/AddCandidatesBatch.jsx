@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import styled from "styled-components";
 
 export default function AddCandidateBatch() {
   const [orgRequirement, setOrgRequirement] = useState("");
@@ -57,18 +56,12 @@ export default function AddCandidateBatch() {
     setBatchCount(prev => prev + 1);
   };
 
-  // tailwind classes for styling glowing border
-  const AnimatedBorder = styled.div`
-    box-shadow: 0 0 15px rgba(0,183,255,0.4), 0 0 22px rgba(255,48,255,0.4);
-
-`;
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-950 text-white p-4">
       <div className="w-full md:w-4/5 lg:w-4/5 xl:w-4/5 bg-gray-800  p-6 rounded-lg shadow-lg">
 
         {/* Organization's Requirement Section */}
-        <AnimatedBorder className="mb-6">
+        
           <div className="bg-gray-900 border-2 border-gray-500 p-4 rounded-md mb-6">
             <h2 className="text-lg font-bold mb-3 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">
               Organization's Requirement
@@ -80,25 +73,36 @@ export default function AddCandidateBatch() {
               className="w-full h-40 p-3 bg-gray-800 border border-gray-500 rounded-md text-white placeholder-blue-300 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
             ></textarea>
           </div>
-        </AnimatedBorder>
+        
         {/* Candidate Email Section */}
-        <AnimatedBorder className="mb-6">
+        
           <div className="bg-gray-900 border-2 border-gray-500 p-4 rounded-md mb-4">
             <h2 className="text-lg font-bold mb-3 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-transparent bg-clip-text">Candidate's Email</h2>
             {emails.map((email, index) => (
               <div key={index} className="mb-4">
-                <label className="block text-blue-300 mb-1">Candidate {index + 1}</label>
+                <label className="block text-blue-300 mb-1">
+                  Candidate {index + 1}
+                </label>
                 <input
                   type="email"
                   value={email}
-                  onChange={(e) => handleEmailChange(index, e.target.value)}
                   placeholder="Enter candidate's email"
                   className="w-full p-3 bg-gray-800 border border-gray-500 rounded-md text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  onChange={(e) => handleEmailChange(index, e.target.value)}
+                  onBlur={(e) => {
+                    const val = e.target.value.trim();
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                    if (val && !emailRegex.test(val)) {
+                      toast.error(`Candidate ${index + 1}: Enter a valid email`);
+                      handleEmailChange(index, ""); // clear invalid email
+                    }
+                  }}
                 />
               </div>
             ))}
           </div>
-        </AnimatedBorder>
+        
 
         {/* Buttons */}
         <div className="flex justify-between items-center mt-6">
