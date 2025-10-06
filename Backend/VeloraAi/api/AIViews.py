@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 import pdfplumber
+from .llm import TTS
 from io import BytesIO
 from django.http import FileResponse
 
@@ -37,10 +38,10 @@ def ParseResumes(request):
 def tts(request):
     text = request.data.get("text")
     print("Request made (TTS)")
-
-    with open("static/InterviewSchedular.wav", "rb") as f:
-        audio_bytes = f.read()
-    print("Audio readed successfully")
+    audio_bytes=TTS(text)
+    # with open("static/InterviewSchedular.wav", "rb") as f:
+    #     audio_bytes = f.read()
+    # print("Audio readed successfully")
     audio_buffer = BytesIO(audio_bytes)
     return FileResponse(audio_buffer, as_attachment=False, filename="tts.wav", content_type='audio/wav')
 

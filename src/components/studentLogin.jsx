@@ -45,7 +45,6 @@ export default function StudentLogin() {
     setFormData({ ...formData, ExpectedPosition: e.target.value });
   };
 
-
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
 

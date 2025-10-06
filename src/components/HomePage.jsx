@@ -36,7 +36,8 @@ export default function DropboxFrontPage() {
       fetch("http://127.0.0.1:8000/wakeup/")
         .catch(() => {});
   }, []);
-  
+
+
   useEffect(() => {
     const typed=new Typed("#desktop-typing-text",{
       strings: Features,
@@ -69,7 +70,7 @@ export default function DropboxFrontPage() {
 
           <div className="hidden md:block text-xl font-bold bg-gradient-to-r  from-blue-400 to-purple-500 bg-clip-text text-transparent">
 
-            AI Hiring System
+            AI Based Hiring Management System
           </div>
           <div className="flex items-center gap-6">
             <a 
@@ -81,7 +82,7 @@ export default function DropboxFrontPage() {
             >
               Design your Resume
             </a>
-            <button className="relative flex items-center w-[9.5em] h-[2.9em] border-[0.2em] border-[#3654ff] rounded-[11px] bg-transparent text-white overflow-hidden transition-all duration-500 hover:bg-[#3654ff]">
+            <button onClick={() => navigate("/WhatsNew")} className="relative cursor-pointer flex items-center w-[9.5em] h-[2.9em] border-[0.2em] border-[#3654ff] rounded-[11px] bg-transparent text-white overflow-hidden transition-all duration-500 hover:bg-[#3654ff]">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
                    className="w-6 h-6 ml-2 mr-2 transition-transform duration-500 ease-in-out hover:translate-x-1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
@@ -98,9 +99,9 @@ export default function DropboxFrontPage() {
             transition={{ duration: 0.6 }}
             className="flex-1 text-left max-w-lg"
           >
-            <h2 className="text-blue-400 font-semibold">
+            {/* <h2 className="text-blue-400 font-semibold">
               AI Based Hiring Management System
-            </h2>
+            </h2> */}
             <h1 className="text-4xl md:text-5xl font-extrabold mt-4 leading-snug">
               <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Smarter Hiring.

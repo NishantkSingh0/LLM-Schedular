@@ -60,7 +60,7 @@ const OrgDashboard = () => {
   const batches = candNames;
 
   const handleAddBatch = () => {
-    navigate('/addCandidateBatch');
+    navigate('/Organization/Add_Candidates');
   };
 
   return (

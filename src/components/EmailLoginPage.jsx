@@ -95,14 +95,23 @@ export default function OrgLogin() {
           <label className="block text-sm font-medium">
             {location.state?.from==="Org"?"Organization Primary Email":"Personal Email"}
           </label>
-          <input
-            type="text"
-            name="email"
-            placeholder="admin@example.com"
-            className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
-            value={Details.email}
-            onChange={handleChange}
-          />
+            <input
+              type="text"
+              name="email"
+              placeholder="admin@example.com"
+              className="w-full sm:px-6 sm:p-2 border rounded peer px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-600"
+              value={Details.email}
+              onChange={handleChange} // updates as user types
+              onBlur={(e) => {
+                const val = e.target.value;
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+              
+                if (val && !emailRegex.test(val)) {
+                  toast.error("Enter a valid Gmail address (example@gmail.com)");
+                  setDetails({ ...Details, email: "" }); // clear invalid email
+                }
+              }}
+            />
           <div className="ml-4 w-0 h-1 rounded-full bg-blue-500 transition-all duration-300 peer-hover:w-[60%] peer-focus:w-[88%] sm:peer-focus:w-[94%]"></div>
         </div>
             <button

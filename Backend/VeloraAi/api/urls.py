@@ -17,6 +17,7 @@ urlpatterns = [
     # Student Database Calls
     path("create-student/", StdDBViews.create_student),
     path("get-student/", StdDBViews.get_student),
+    path("update-resume/", StdDBViews.update_resume),
     path("update-student-tokens/", StdDBViews.update_tokens),
     path("update-student-scores/", StdDBViews.update_scores),
 ]
