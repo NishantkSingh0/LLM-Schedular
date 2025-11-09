@@ -36,7 +36,12 @@ Feature	Description
 - **Monitoring**: Browser APIs for camera and tab tracking
 
 ## 🧠 Purpose of This Repository
-
+- The repository focuses on showcasing:
+- Intelligent scheduling logic that matches candidates and interviewers based on availability and skill requirements.
+- Automated email and calendar integration.
+- Role-based access and workflow automation.
+- Scalable backend design for future integration with enterprise systems
+  
 **This repo is not the full product, but a demonstration build created to:**
 - Explain the project’s architecture and workflow
 - Show how AI-driven interview automation works
